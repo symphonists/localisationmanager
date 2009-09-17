@@ -7,7 +7,7 @@ A Symphony CMS Extension to manage back-end localisations.
 - Build Date: 17th September 2009
 - Requirements: Symphony 2.0
 
-## Available Languages
+## Available languages
 
 Localisation Manager currently supports the following languages:
 
@@ -31,7 +31,7 @@ Newly created or edited language files can be uploaded either to `/symphony/lib/
 
 ## Sharing language files
 
-If you like to contribute a new or updated language files, please fork this repository and commit your changes.
+If you like to contribute new or updated language files, please fork this repository and commit your changes.
 
 ## Acknowledgement
 
