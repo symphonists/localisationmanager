@@ -205,7 +205,7 @@ END;
 						$strings .= "\t\t// Missing translations\n\n";
 						$index++;
 					}
-					$strings .= "\t\t'" . $string . "' => \n\t\tfalse,\n\n";
+					$strings .= "\t\t'" . str_replace("'", "\'", $string) . "' => \n\t\tfalse,\n\n";
 				}
 			}
 			// Close array and return
