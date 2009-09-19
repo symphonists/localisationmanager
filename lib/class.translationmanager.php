@@ -2,8 +2,10 @@
 
 	/**
 	 * TRANSLATION MANAGER for Symphony CMS
-	 * Written by Marcin Konicki, http://ahwayakchih.neoni.net, released under MIT licence
-	 * http://github.com/ahwayakchih/translationmanager
+	 * http://github.com/ahwayakchih/translationmanager (MIT licence)
+	 *
+	 * Written by Marcin Konicki, http://ahwayakchih.neoni.net
+	 * Modified by Nils Hörrmann, http://www.nilshoerrmann.de
 	 */
 
 	class TranslationManager {
@@ -308,6 +310,24 @@
 		    }
 
 			return true;
+		}
+		
+		public function JavaScriptStrings() {
+			// load admin.js
+			$javascript = file_get_contents(ASSETS . '/admin.js');
+			// extract language definitions
+			preg_match('/Language: {(.*)"\n\t\t}/s', $javascript, $strings);
+			// remove line breaks and tabs
+			$strings = preg_replace('/\n|\r|\t/', '', $strings[1]);
+			// extract language strings
+			$strings = explode('",', $strings);
+			$language = array();
+			foreach($strings as $string) {
+				// split language strings
+				$part = preg_split('/: {0,}"/', $string);
+				$language[$part[0]] = $part[1]; 
+			}
+			return $language;
 		}
 
 		public static function toPHP($data) {

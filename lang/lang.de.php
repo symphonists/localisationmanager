@@ -6,7 +6,7 @@
 			'name' => 'Nils Hörrmann',
 			'email' => 'post@nilshoerrmann.de',
 		),
-		'release-date' => '2009-09-17',
+		'release-date' => '2009-09-19',
 	);
 	
 	
@@ -183,7 +183,7 @@
 		'belastet',
 
 		'Use an XPath expression to select which elements from the source XML to include.' => 
-		'Benutzen Sie einen X-Path-Ausdruck, um die einzubindenen Elemente der XML-Quelle auszuwählen.',
+		'Benutzen Sie einen X-Path-Ausdruck, um die einzubinden Elemente der XML-Quelle auszuwählen.',
 
 		'Custom XML' => 
 		'Benutzerdefiniertes XML',
@@ -672,7 +672,7 @@
 		'Name',
 
 		'Name is a required field.' => 
-		'Name ist ein Pflichfeld.',
+		'Name ist ein Pflichtfeld.',
 
 		'Namespace' => 
 		'Namensraum',
@@ -732,7 +732,7 @@
 		'optional',
 
 		'Parameter Output' => 
-		'Parameterausgabe',
+		'Ausgabeparameter',
 
 		'Password' => 
 		'Passwort',
@@ -1065,7 +1065,7 @@
 		'Passen Sie an, wie Datums- und Zeitangaben innerhalb des Administrationsbereichs dargestellt werden.',
 
 		'Data retrieved from the Symphony support server is decompressed with the ZLib compression library.' => 
-		'Daten, die vom Symphony-Supportserver empfangen werden, wir mit der ZLib-Kompression-Bibliothek dekomprimiert.',
+		'Daten, die vom Symphony-Supportserver empfangen werden, werden mit der ZLib-Kompression-Bibliothek dekomprimiert.',
 
 		'Data source output grouping is not supported by the <code>%s</code> field' => 
 		'Ergebnisgruppierung für Datenquellen wird vom Feld <code>%s</code> nicht unterstützt',
@@ -1220,133 +1220,189 @@
 		'Blueprints' => 
 		'Blaupausen',
 
-		// Missing translations
+		'%1$s Allow remote login via <a href="%2$s">%2$s</a>' => 
+		'%1$s Remotezugriff über <a href="%2$s">%2$s</a> erlauben',
 
 		'An error occurred while processing this form. <a href="#error">See below for details.</a>' => 
-		false,
+		'Beim verarbeiten dieses Formulars ist ein Fehler aufgetreten. <a href="#error">Details siehe unten.</a>',
 
 		'Data source updated at %1$s. <a href="%2$s">Create another?</a> <a href="%2$s">View all Data sources</a>' => 
-		false,
+		'Diese Datenquelle wurde um %1$s aktualisiert. <a href="%2$s">Eine neue erstellen?</a> <a href="%2$s">Alle Datenquellen anzeigen.</a>',
 
 		'Data source created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Data source</a>' => 
-		false,
+		'Diese Datenquelle wurde um %1$s erstellt. <a href="%2$s">Eine neue erstellen?</a> <a href="%2$s">Alle Datenquellen anzeigen.</a>',
 
 		'The parameter <code id="output-param-name">$ds-%s</code> will be created with this field\'s value for XSLT or other data sources to use.' => 
-		false,
+		'Das Parameter <code id="output-param-name">$ds-%s</code> wird mit den Werten dieses Feldes erstellt und steht sowohl für XSLT als auch anderen Datenquellen zur Verfügung.',
 
 		'Event updated at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Events</a>' => 
-		false,
+		'Dieses Ereignis wurde um %1$s aktualisiert. <a href="%2$s">Ein neues erstellen?</a> <a href="%2$s">Alle Ereignisse anzeigen.</a>',
 
 		'Event created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Events</a>' => 
-		false,
-
-		' (<b>Notice that it is possible to get mixtures of success and failure messages when using the "Allow Multiple" option</b>)' => 
-		false,
-
-		'The send email filter, upon the event successfully saving the entry, takes input from the form and send an email to the desired recipient. <b>This filter currently does not work with the "Allow Multiple" option.</b> The following are the recognised fields:' => 
-		false,
-
-		'<acronym title="Universal Resource Locator">URL</acronym>' => 
-		false,
-
-		'<acronym title="Universal Resource Locator">URL</acronym> Parameters' => 
-		false,
-
-		'%s %s at %s. <a href="%s">View all %s</a>' => 
-		false,
-
-		'%s %s at %s. <a href="%s">Create another?</a> <a href="%s">View all %s</a>' => 
-		false,
-
-		'Unknown errors occurred while attempting to save. Please check your <a href="%s">activity log</a>.' => 
-		false,
-
-		'Section updated at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Sections</a>' => 
-		false,
-
-		'Section created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Sections</a>' => 
-		false,
-
-		'Utility updated at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Utilities</a>' => 
-		false,
-
-		'Utility created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Utilities</a>' => 
-		false,
-
-		'The supplied password was rejected. <a href="%s">Retrieve password?</a>' => 
-		false,
-
-		'It looks like your trying to create an entry. Perhaps you want fields first? <a href="%s">Click here to create some.</a>' => 
-		false,
+		'Dieses Ereignis wurde um %1$s erstellt. <a href="%2$s">Ein neues erstellen?</a> <a href="%2$s">Alle Ereignisse anzeigen.</a>',
 
 		'Entry updated at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Entries</a>' => 
-		false,
+		'Dieser Eintrag wurde um %1$s aktualisiert. <a href="%2$s">Einen neuen erstellen?</a> <a href="%3$s">Alle Einträge anzeigen.</a>',
 
-		'Entry created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Entries</a>' => 
-		false,
+		' (<b>Notice that it is possible to get mixtures of success and failure messages when using the "Allow Multiple" option</b>)' => 
+		' (<b>Bitte beachten Sie, dass Sie möglicherweise eine Mischung aus Fehler- und Erfolgsrückmeldungen erhalten, wenn Sie die die Erstellung mehrerer Einträge zulassen.</b>)',
+
+		'<acronym title="Universal Resource Locator">URL</acronym>' => 
+		'<acronym title="Universal Resource Locator">URL</acronym>',
+
+		'<acronym title="Universal Resource Locator">URL</acronym> Parameters' => 
+		'<acronym title="Universal Resource Locator">URL-</acronym>Parameter',
+
+		'%s %s at %s. <a href="%s">View all %s</a>' => 
+		'%s %s um %s. <a href="%s">Alle %s anzeigen.</a>',
+
+		'%s %s at %s. <a href="%s">Create another?</a> <a href="%s">View all %s</a>' => 
+		'%s %s um %s. <a href="%s">Eine(n) neue(n) erstellen?</a> <a href="%s">Alle %s anzeigen.</a>',
+
+		'Unknown errors occurred while attempting to save. Please check your <a href="%s">activity log</a>.' => 
+		'Ein unbekannter Fehler ist beim Speichern aufgetraten. Bitte überprüfen Sie Ihr <a href="%s">Systemlogbuch</a>.',
+
+		'The supplied password was rejected. <a href="%s">Retrieve password?</a>' => 
+		'Das übermittelte Passwort wurde nicht akzeptiert. <a href="%s">Ein neues anfordern?</a>',
+
+		'It looks like your trying to create an entry. Perhaps you want fields first? <a href="%s">Click here to create some.</a>' => 
+		'Anscheinend versuchen Sie einen neuen Eintrag zu erstellen. Vielleicht möchten Sie vorher Felder anlegen. <a href="%s">Klicken Sie hier um Felder anzulegen.</a>',
 
 		'It looks like your trying to create an entry. Perhaps you want custom fields first? <a href="%s">Click here to create some.</a>' => 
-		false,
-
-		'Author updated at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Authors</a>' => 
-		false,
-
-		'Author created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Authors</a>' => 
-		false,
-
-		'%1$s Allow remote login via <a href="%2$s">%2$s</a>' => 
-		'%1$s Remotezugriff unter <a href="%2$s">%2$s</a> erlauben',
-
-		'<a href="%s" title="Show debug view">Compile</a>' => 
-		false,
-
-		'<a href="%1$s" title="Show debug view for %2$s">Line %3$d</a>' => 
-		false,
+		'Anscheinend versuchen Sie einen neuen Eintrag zu erstellen. Vielleicht möchten Sie vorher Felder anlegen. <a href="%s">Klicken Sie hier um Felder anzulegen.</a>',
 
 		'Could not add directory "%s".' => 
-		false,
+		'Das Verzeichnis "%s" konnte nicht hinzugefügt werden.',
 
 		'Could not add file "%s".' => 
-		false,
+		'Die Datei "%s" konnte nicht hinzugefügt werden.',
 
 		'Please <a href="%s">login</a> to view this page.' => 
-		false,
+		'Bitte <a href="%s">melden Sie sich an</a>, um diese Seite zu sehen.',
 
 		'MySQL Error (%1$s): %2$s in query "%3$s"' => 
-		false,
+		'MySQL-Fehler (%1$s): %2$s in query "%3$s"',
 
 		'<abbr title="PHP: Hypertext Pre-processor">PHP</abbr> 5.1 or above' => 
-		false,
+		'<abbr title="PHP: Hypertext Pre-processor">PHP</abbr> 5.1 oder höher',
 
 		'Symphony needs a recent version of <abbr title="PHP: Hypertext Pre-processor">PHP</abbr>.' => 
-		false,
+		'Symphony benötigt eine aktuelle <abbr title="PHP: Hypertext Pre-processor">PHP</abbr>-Version.',
 
 		'My<abbr title="Structured Query Language">SQL</abbr> 4.1 or above' => 
-		false,
+		'My<abbr title="Structured Query Language">SQL</abbr> 4.1 oder höher',
 
 		'Symphony needs a recent version of My<abbr title="Structured Query Language">SQL</abbr>.' => 
-		false,
+		'Symphony benötigt eine aktuelle My<abbr title="Structured Query Language">SQL</abbr>-Version.',
 
 		'<abbr title="eXtensible Stylesheet Language Transformation">XSLT</abbr> Processor' => 
-		false,
+		'<abbr title="eXtensible Stylesheet Language Transformation">XSLT</abbr>-Prozessor',
 
 		'Symphony needs an XSLT processor such as Lib<abbr title="eXtensible Stylesheet Language Transformation">XSLT</abbr> or Sablotron to build pages.' => 
-		false,
+		'Symphony benötigt einen XSLT-Prozessor wie Lib<abbr title="eXtensible Stylesheet Language Transformation">XSLT</abbr> oder Sablotron um Seiten erzeugen zu können.',
 
 		'An error occurred during installation. You can view you log <a href="install-log.txt">here</a> for more details.' => 
-		false,
+		'Während der Installation ist ein Fehler aufgetreten. Sie können das <a href="install-log.txt">Installation-Logbuch</> für weitere Informationen einsehen.',
 
 		'Error creating field object with id %1$d, for filtering in data source "%2$s". Check this field exists.' => 
-		false,
+		'Beim Erstellen des Feld-Objekts mit der ID %1sd, das zum Filter der Datenquelle "%2$s" verwendet wird, ist ein Fehler aufgetreten. Überprüfen Sie, ob das Feld existiert.',
 
 		'"%1$s" contains invalid XML. The following error was returned: <code>%2$s</code>' => 
-		false,
+		'"%1$s" enthält ungültiges XML. Der folgende Fehler wurde zurückgegeben: <code>%2$s</code>',
 
 		'File chosen in "%1$s" exceeds the maximum allowed upload size of %2$s specified by your host.' => 
-		false,
+		'Die gewählte Datei überschreitet die von Ihrem Host festgelegte maximale Uploadgröße von %2$s.',
 
 		'File chosen in "%1$s" exceeds the maximum allowed upload size of %2$s, specified by Symphony.' => 
-		false,
+		'Die gewählte Datei überschreitet die für Symphony festgelegte maximale Uploadgröße von %2$s.',
+
+		'The send email filter, upon the event successfully saving the entry, takes input from the form and send an email to the desired recipient. <b>This filter currently does not work with the "Allow Multiple" option.</b> The following are the recognised fields:' => 
+		'Der Filter zum Versenden von E-Mail schickt, sofern das Ereignis erfolgreich gespeichert werden konnte, alle Eingaben des Formulars an den gewünschten Empfänger. <b>Diese Filter funktioniert derzeit nicht, wenn Sie die Erstellung mehrerer Einträge zulassen.</b> Folgende Felder werden vom Filter erkannt:',
+
+		'Section updated at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Sections</a>' => 
+		'Die Sektion wurde um %1$s aktualisiert. <a href="%2$s">Eine neue erstellen?</a> <a href="%3$s">Alle Sektionen anzeigen.</a>',
+
+		'Section created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Sections</a>' => 
+		'Die Sektion wurde um %1$s erstellt. <a href="%2$s">Eine neue erstellen?</a> <a href="%3$s">Alle Sektionen anzeigen.</a>',
+
+		'Utility updated at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Utilities</a>' => 
+		'Der Baustein wurde um %1$s aktualisiert. <a href="%2$s">Einen neuen erstellen?</a> <a href="%3$s">Alle Bausteine anzeigen.</a>',
+
+		'Utility created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Utilities</a>' => 
+		'Der Baustein wurde um %1$s erstellt. <a href="%2$s">Einen neuen erstellen?</a> <a href="%3$s">Alle Bausteine anzeigen.</a>',
+
+		'Entry created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Entries</a>' => 
+		'Der Eintrag wurde um %1$s erstellt. <a href="%2$s">Einen neuen erstellen?</a> <a href="%3$s">Alle Einträge anzeigen.</a>',
+
+		'Author updated at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Authors</a>' => 
+		'Der Autor wurde um %1$s aktualisiert. <a href="%2$s">Einen neuen erstellen?</a> <a href="%3$s">Alle Autoren anzeigen.</a>',
+
+		'Author created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Authors</a>' => 
+		'Der Autor wurde um %1$s erstellt. <a href="%2$s">Einen neuen erstellen?</a> <a href="%3$s">Alle Autoren anzeigen.</a>',
+
+		'<a href="%s" title="Show debug view">Compile</a>' => 
+		'<a href="%s" title="Zeige Debug-Modus">Kompiliere</a>',
+
+		'<a href="%1$s" title="Show debug view for %2$s">Line %3$d</a>' => 
+		'<a href="%1$s" title="Wechsle in den Debug-Modus für %2$s">Zeile %3$d</a>',
+
+	);
+	
+	
+	/*
+	 * CORE: Symphony
+	 * Javascript strings
+	 */
+
+	$dictionary += array(
+	
+		'Untitled' => 
+		'Ohne Titel',
+
+		'Password' => 
+		'Passwort',
+
+		'Add item' => 
+		'Hinzufügen',
+
+		'Remove selected items' => 
+		'Auswahl entfernen',
+
+		'Are you sure you want to {$action} {$name}?' => 
+		'Sind Sie sicher, dass sie {$name} {$action} wollen?',
+
+		'Are you sure you want to {$action} {$count} items?' => 
+		'Sind Sie sicher, dass sie {$count} Einträge {$action} wollen?',
+
+		'Are you sure you want to {$action}?' => 
+		'Sind Sie sicher, dass Sie {$action} wollen?',
+
+		'Reordering was unsuccessful.' => 
+		'Das Neusortieren ist fehlgeschlagen.',
+
+		'Change Password' => 
+		'Passwort ändern',
+
+		'Remove File' => 
+		'Datei entfernen',
+
+		'at' => 
+		'um',
+
+		'just now' => 
+		'gerade eben',
+
+		'a minute ago' => 
+		'vor einer Minute',
+
+		'{$minutes} minutes ago' => 
+		'vor {$minutes} Minuten',
+
+		'about 1 hour ago' => 
+		'vor etwa einer Stunde',
+
+		'about {$hours} hours ago' => 
+		'vor etwa {$hours} Stunden',
 
 	);
 	
@@ -1387,7 +1443,7 @@
 		'Installiere Symphony, <em>Version %s</em>',
 
 		'It appears that Symphony has already been installed at this location.' => 
-		'Wie es scheint, ist Symphony bereits an diesem Ort installiert.',
+		'Anscheinend ist Symphony bereits an diesem Ort installiert.',
 
 		'Export Ensemble' => 
 		'Ensemble-Export',
@@ -1398,13 +1454,11 @@
 		'Packages entire site as a <code>.zip</code> archive for download.' => 
 		'Stellt die gesamte Seite als <code>Zip</code>-Archiv zur Verfügung.',
 
-		// Missing translations
-
 		'Export Ensemble cannot be installed, since the "<a href="http://php.net/manual/en/book.zip.php">ZipArchive</a>" class is not available. Ensure that PHP was compiled with the <code>--enable-zip</code> flag.' => 
-		false,
+		'Ensemble-Export kann nicht installiert werden, weil die Klasse "<a href="http://php.net/manual/en/book.zip.php">ZipArchive</a>" nicht verfügbar ist. Stellen Sie sicher, dass PHP mit <code>--enable-zip</code> kompiliert wurde.',
 
 		'Warning: It appears you do not have the "ZipArchive" class available. Ensure that PHP was compiled with <code>--enable-zip</code>' => 
-		false,
+		'Warnung: Anscheinend ist die Klasse "ZipArchive" nicht verfügbar. Stellen Sie sicher, dass PHP mit <code>--enable-zip</code> kompiliert wurde.',
 
 	);
 	
@@ -1450,7 +1504,7 @@
 		'Vertrauenswürdige Seiten',
 
 		'Leave empty to disable external linking. Single rule per line. Add * at end for wild card matching.' => 
-		'Lassen Sie diesen Feld frei, wenn Sie externe Verweise unterbinden wollen. Eine Regel pro Zeile. Verwenden Sie * als Maskenzeichen.',
+		'Lassen Sie dieses Feld frei, wenn Sie externe Verweise unterbinden wollen. Eine Regel pro Zeile. Verwenden Sie * als Maskenzeichen.',
 
 	);
 	
@@ -1504,13 +1558,8 @@
 		'System Standard' => 
 		'Systemstandard',
 
-		// Missing translations
-
-		'Language code is required.' => 
-		false,
-
 		'Localisation Manager' => 
-		false,
+		'Localisation Manager',
 
 	);
 	
@@ -1529,7 +1578,7 @@
 		'Wartungsmodus aktivieren',
 
 		'Maintenance mode will redirect all visitors, other than developers, to the specified maintenance page.' => 
-		'Der Wartungsmodus leitet alle Besucher, die nicht als Entwickler registiert sind, auf eine festgelegte Wartungsseite um (Seitentyp: <code>maintenance</code>).',
+		'Der Wartungsmodus leitet alle Besucher, die nicht als Entwickler registriert sind, auf eine festgelegte Wartungsseite um (Seitentyp: <code>maintenance</code>).',
 
 		'This site is currently in maintenance mode. <a href="%s/symphony/system/preferences/?action=toggle-maintenance-mode&amp;redirect=%s">Restore?</a>' => 
 		'Diese Seite ist derzeit im Wartungsmodus. <a href="%s/symphony/system/preferences/?action=toggle-maintenance-mode&amp;redirect=%s">Seite freischalten?</a>',
@@ -1682,4 +1731,3 @@
 		'/&(?!&)/' => '-und-',
 
 	);
-	

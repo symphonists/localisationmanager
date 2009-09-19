@@ -93,9 +93,12 @@
 
 		public function __translateJavaScript($context) {
 			// get current language
-			$lang = $context['parent']->Configuration->get('lang', 'symphony');
-			// append current language file	
-			$context['parent']->Page->addScriptToHead(URL . '/extensions/localisationmanager/assets/admin.' . $lang . '.js', 1000, false);
+			$lang = $this->__getCurrentLanguage(true);
+			if($lang == 'system') {
+				$lang = Administration::instance()->Configuration->get('lang', 'symphony');
+			}
+			// append current language file
+			if($lang != 'en') $context['parent']->Page->addScriptToHead(URL . '/symphony/extension/localisationmanager/javascript', 1000, false);
 		}
 		
 		/**
