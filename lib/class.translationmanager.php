@@ -35,7 +35,7 @@
 			else if (strlen($name) > 0) {
 				$path = dirname(TranslationManager::filePath('en', $name));
 				foreach (glob($path.'/lang.*.php') as $file) {
-					$lang = preg_replace('/^[\w\W]+\/lang.(\w+).php/', '\\1', $file);
+					$lang = preg_replace('/^[\w\W]+\/lang.([-A-Za-z0-9]+).php/', '\\1', $file);
 					$result[$lang][] = $name;
 				}
 			}
