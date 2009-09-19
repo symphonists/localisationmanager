@@ -3,7 +3,7 @@
 	require_once(TOOLKIT . '/class.administrationpage.php');
 	require_once(EXTENSIONS . '/localisationmanager/lib/class.translationmanager.php');
 
-	Class contentExtensionLocalisationManagerIndex extends AdministrationPage{
+	Class contentExtensionLocalisationManagerIndex extends AdministrationPage {
 
 		private $_tm;
 
@@ -74,6 +74,13 @@
 END;
 			// Get core language strings
 			$php .= $this->getStrings($code, 'symphony');
+			// Get core Javascript language strings
+			$strings = $this->_tm->JavaScriptStrings();
+			$javascript = array();
+			foreach($strings as $id => $string) {
+				$javascript[$string] = array(ASSETS . '/admin.js');
+			}
+			$php .= $this->getStrings($code, 'symphony', 'Symphony', $javascript);
 			// Get extension language strings
 			$extensions = $this->_Parent->ExtensionManager->listAll();
 			foreach($extensions as $extension => $about) {
@@ -148,11 +155,11 @@ END;
 		 * @param string $context
 		 */
 
-		function getStrings($code, $context, $name) {
+		function getStrings($code, $context, $name, $javascript) {
 			// Get default language strings
 			$default = array(
 				'about' => array(),
-				'dictionary' => $this->_tm->defaultDictionary($context),
+				'dictionary' => ($javascript) ? $javascript : $this->_tm->defaultDictionary($context),
 				'transliterations' => array()
 			);
 			// Get all translations for current language
@@ -167,13 +174,14 @@ END;
 			// Set header
 			$area = ($context == 'symphony') ? 'CORE' : 'EXTENSION';
 			$name = ($context == 'symphony') ? 'Symphony' : $name;
-			$add = ($context == 'symphony') ? '' : '+';
+			$add = ($context == 'symphony' && !$javascript) ? '' : '+';
+			$type = ($javascript) ? 'Javascript' : 'Localisation';
 			$start = <<<END
 	
 	
 	/*
 	 * $area: $name
-	 * Localisation strings
+	 * $type strings
 	 */
 
 	\$dictionary $add= array(
@@ -197,7 +205,7 @@ END;
 						$strings .= "\t\t// Missing translations\n\n";
 						$index++;
 					}
-					$strings .= "\t\t'" . addslashes($string) . "' => \n\t\tfalse,\n\n";
+					$strings .= "\t\t'" . $string . "' => \n\t\tfalse,\n\n";
 				}
 			}
 			// Close array and return
