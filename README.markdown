@@ -46,16 +46,16 @@ This extension makes use of the Translation Manager class written by Marcin Koni
 
 ## Change log
 
-### Version 1.0.2:
+### Version 1.0.2, 19th September 2009:
 
 - Fixed issue with unescaped single quotes in missing string list.
 - Fixed regex used to extract language code from language file names.
 
-### Version 1.0.1: 
+### Version 1.0.1, 19th September 2009: 
 
 - Added dynamic JavaScript translation generation.
 - Fixed issue with escaped double quotes.
 
-### Version 1.0.0: 
+### Version 1.0.0, 17th September 2009: 
 
 - Initial release.
