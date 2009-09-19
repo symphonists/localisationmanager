@@ -2,16 +2,23 @@
 
 A Symphony CMS Extension to manage back-end localisations.
 
-- Version: 1.0
+- Version: 1.0.1
 - Author: Nils Hörrmann, post@nilshoerrmann.de
-- Build Date: 17th September 2009
+- Build Date: 19th September 2009
 - Requirements: Symphony CMS 2.0.x
 
 ## Available languages
 
 Localisation Manager currently supports the following languages:
 
-- German
+- **German,** containing:
+  - Symphony Core
+  - Debug DevKit
+  - Export Ensemble
+  - JIT Image Manipulation
+  - Maintenance Mode
+  - Profile DevKit
+  - Field: Select Box Link
 
 If you like to contribute new languages or if you like to extend existing ones, please read the instructions below.
 
@@ -36,3 +43,14 @@ If you like to contribute new or updated language files, please fork this reposi
 ## Acknowledgement
 
 This extension makes use of the Translation Manager class written by Marcin Konicki, http://ahwayakchih.neoni.net, available at <http://github.com/ahwayakchih/translationmanager>.
+
+## Change log
+
+### Version 1.0.1: 
+
+- Added dynamic JavaScript translation generation.
+- Fixed issue with escaped double quotes.
+
+### Version 1.0.0: 
+
+- Initial release.
