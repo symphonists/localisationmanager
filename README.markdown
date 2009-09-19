@@ -2,7 +2,7 @@
 
 A Symphony CMS Extension to manage back-end localisations.
 
-- Version: 1.0.1
+- Version: 1.0.2
 - Author: Nils Hörrmann, post@nilshoerrmann.de
 - Build Date: 19th September 2009
 - Requirements: Symphony CMS 2.0.x
@@ -45,6 +45,11 @@ If you like to contribute new or updated language files, please fork this reposi
 This extension makes use of the Translation Manager class written by Marcin Konicki, http://ahwayakchih.neoni.net, available at <http://github.com/ahwayakchih/translationmanager>.
 
 ## Change log
+
+### Version 1.0.2:
+
+- Fixed issue with unescaped single quotes in missing string list.
+- Fixed regex used to extract language code from language file names.
 
 ### Version 1.0.1: 
 
