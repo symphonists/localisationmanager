@@ -75,7 +75,7 @@
 			// navigation available?
 			if(!is_array($context['navigation'])) return;
 			// translate navigation items
-			for($i = 0; $i < count($context['navigation']); $i++) {
+			for($i = 1; $i < count($context['navigation']); $i++) {
 				$context['navigation'][$i]['name'] = @__($context['navigation'][$i]['name']);
 				if(is_array($context['navigation'][$i]['children'])) {
 					for($c = 0; $c < count($context['navigation'][$i]['children']); $c++) {
