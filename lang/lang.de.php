@@ -1320,10 +1320,10 @@
 		'Der Filter zum Versenden von E-Mail schickt, sofern das Ereignis erfolgreich gespeichert werden konnte, alle Eingaben des Formulars an den gewünschten Empfänger. <b>Diese Filter funktioniert derzeit nicht, wenn Sie die Erstellung mehrerer Einträge zulassen.</b> Folgende Felder werden vom Filter erkannt:',
 
 		'Section updated at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Sections</a>' => 
-		'Die Sektion wurde um %1$s aktualisiert. <a href="%2$s">Eine neue erstellen?</a> <a href="%3$s">Alle Sektionen anzeigen.</a>',
+		'Der Bereich wurde um %1$s aktualisiert. <a href="%2$s">Einen neuen erstellen?</a> <a href="%3$s">Alle Bereiche anzeigen.</a>',
 
 		'Section created at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Sections</a>' => 
-		'Die Sektion wurde um %1$s erstellt. <a href="%2$s">Eine neue erstellen?</a> <a href="%3$s">Alle Sektionen anzeigen.</a>',
+		'Der Bereich wurde um %1$s erstellt. <a href="%2$s">Einen neuen erstellen?</a> <a href="%3$s">Alle Bereiche anzeigen.</a>',
 
 		'Utility updated at %1$s. <a href="%2$s">Create another?</a> <a href="%3$s">View all Utilities</a>' => 
 		'Der Baustein wurde um %1$s aktualisiert. <a href="%2$s">Einen neuen erstellen?</a> <a href="%3$s">Alle Bausteine anzeigen.</a>',
@@ -1532,7 +1532,7 @@
 		'Sprache',
 
 		'e. g. Deutsch, Français' => 
-		'z. B.  eutsch, Français',
+		'z. B. Deutsch, Français',
 
 		'Language Code' => 
 		'Sprachcode',
