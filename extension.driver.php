@@ -33,7 +33,7 @@
 					'callback' => 'appendPreferences'
 				),
 				array(
-					'page' => '/administration/',
+					'page' => '/backend/',
 					'delegate' => 'AdminPagePostGenerate',
 					'callback' => 'customPreferences'
 				),					
@@ -53,7 +53,7 @@
 					'callback' => '__savePreferences'
 				),
 				array(
-					'page' => '/administration/',
+					'page' => '/backend/',
 					'delegate' => 'NavigationPreRender',
 					'callback' => '__translateNavigation'
 				),
@@ -155,9 +155,9 @@
 		 * @param boolean $current 
 		 */
 		
-		public function __getCurrentLanguage($current) {
+		public function __getCurrentLanguage($current = false) {
 			if($current) {
-				$id = Administration::instance()->Author->_fields['id'];		
+				$id = Administration::instance()->Author->get('id');		
 			}
 			else {
 				$callback = Administration::instance()->getPageCallback();
@@ -237,7 +237,7 @@
 				if($current == 'system') $selected = ' selected="selected"';
 			    // Load current document
 			    $doc = new DOMDocument();
-			    $doc->loadHTML($context['output']);
+			    @$doc->loadHTML($context['output']);
 			    $xpath = new DOMXPath($doc);
 			    // Create preferences
 			    $content = '<fieldset class="settings">

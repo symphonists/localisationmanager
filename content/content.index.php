@@ -17,7 +17,7 @@
 		 */
 		
 		function view(){
-			$this->setPageType();
+			$this->setPageType('forms');
 			$this->setTitle(__('%1$s &ndash; %2$s', array(__('Symphony'), __('Localisation Manager'))));
 			$this->appendSubheading(__('Language Manager'));
 			$content = '<legend>' . __('Export Settings') . '</legend>
@@ -56,8 +56,8 @@
 			// Create content
 			if(!$code) $code = 'clean';
 			if(!$language) $language = 'Clean language file';
-			$author = Administration::instance()->Author->_fields['first_name'] . ' ' . Administration::instance()->Author->_fields['last_name'];
-			$email = Administration::instance()->Author->_fields['email'];
+			$author = Administration::instance()->Author->get('first_name') . ' ' . Administration::instance()->Author->get('last_name');
+			$email = Administration::instance()->Author->get('email');
 			$date = date('Y-m-d');
 			// Create about array
 			$php = '<'."?php\n\n";
@@ -155,7 +155,7 @@ END;
 		 * @param string $context
 		 */
 
-		function getStrings($code, $context, $name, $javascript) {
+		function getStrings($code, $context, $name = false, $javascript = false) {
 			// Get default language strings
 			$default = array(
 				'about' => array(),
