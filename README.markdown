@@ -4,7 +4,7 @@ A Symphony extension to create and export localisation files.
 
 - Version: 1.2
 - Author: Nils Hörrmann, post@nilshoerrmann.de
-- Build Date: 5th February 2010
+- Build Date: 6th February 2010
 - Requirements: Symphony 2.0.7**RC2**
 
 
@@ -40,7 +40,7 @@ Further information about Symphony localisation can be found on the [Symphony we
 
 ## Change log
 
-**Version 1.2, 5th February 2010:**
+**Version 1.2, 6th February 2010:**
 
 - Complete rewrite of the string matching function
 - Removed all features for backend localisation which are now part of the core
