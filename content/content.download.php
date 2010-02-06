@@ -1,0 +1,97 @@
+<?php
+
+	require_once(TOOLKIT . '/class.administrationpage.php');
+	require_once(EXTENSIONS . '/localisationmanager/lib/class.localisationmanager.php');
+
+	Class contentExtensionLocalisationManagerDownload extends AdministrationPage {
+
+		private $LocalisationManager;
+		
+		function __construct(&$parent) {
+			parent::__construct($parent);
+			$this->LocalisationManager = new LocalisationManager($parent);
+		}
+		
+		/**
+		 * Download language file
+		 */
+		
+		function build($context) {
+			// Get context
+			$name = $context[0];
+			$lang = $context[1];
+			
+			// Get localisation strings
+			$data = $this->LocalisationManager->buildDictionary($name, $lang);
+
+			// Load template
+			$path = EXTENSIONS . '/localisationmanager/lib';
+			if($name == 'symphony') {
+				$template = file_get_contents($path . '/lang.core.tpl');
+			}
+			else {
+				$template = file_get_contents($path . '/lang.extension.tpl');
+			}
+			
+			// Add data
+			$template = str_replace('<!-- $name -->', $data['about']['name'], $template);
+			$template = str_replace('<!-- $author -->', $data['about']['author']['name'], $template);
+			$template = str_replace('<!-- $email -->', $data['about']['author']['email'], $template);
+			$template = str_replace('<!-- $website -->', $data['about']['author']['website'], $template);
+			$template = str_replace('<!-- $date -->', $data['about']['release-date'], $template);
+			
+			if($name != 'symphony') {
+				$ExtensionManager = new ExtensionManager($this->parent);
+				$extensions = $ExtensionManager->listAll();
+				$template = str_replace('<!-- $extension -->', $extensions[$name]['name'], $template);
+			}
+
+			$template = str_replace('<!-- $strings -->', $this->__layout($data['dictionary']['strings']), $template);
+			$template = str_replace('<!-- $obsolete -->', $this->__layout($data['dictionary']['obsolete'], 'Obsolete'), $template);
+			$template = str_replace('<!-- $missing -->', $this->__layout($data['dictionary']['missing'], 'Missing'), $template);
+	
+			if($name == 'symphony') {
+				$template = str_replace('<!-- $alphabetical uppercase -->', $this->__transliterations($data['transliterations']['alphabetical']['uppercase'], 5), $template);
+				$template = str_replace('<!-- $alphabetical lowercase -->', $this->__transliterations($data['transliterations']['alphabetical']['lowercase'], 5), $template);
+				$template = str_replace('<!-- $symbolic -->', $this->__transliterations($data['transliterations']['symbolic'], 3), $template);
+				$template = str_replace('<!-- $ampersands -->', $this->__transliterations($data['transliterations']['ampersands']), $template);
+			}
+			
+			// Send file
+			header('Content-Type: application/x-php; charset=utf-8');
+			header('Content-Disposition: attachment; filename="lang.' . $lang. '.php"');
+			header("Content-Description: File Transfer");
+			header("Cache-Control: no-cache, must-revalidate");
+			header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+			echo $template;
+			exit();			
+		}
+		
+		private function __layout($strings, $comment=false) {
+			if(!is_array($strings) || empty($strings)) return;
+			if($comment) {
+				$content = "\t\t// " . $comment . "\n\n";
+			}
+			foreach($strings as $key => $string) {
+				if(empty($string)) $string = 'false';
+				$content .= "\t\t'" . str_replace("'", "\'", $key) . "' => \n\t\t'" . str_replace("'", "\'", $string) . "',\n\n";
+			}
+			return $content;
+		}
+		
+		private function __transliterations($strings, $break=1) {
+			if(!is_array($strings)) return;
+			$count = 0;
+			foreach($strings as $key => $string) {
+				if($count == $break) {
+					$content .= "\n";
+					$count = 0;
+				}
+				if(empty($string)) $string = 'null';
+				$content .= "\t\t'" . $key . "' => " . $string . ",";
+				$count++;
+			}
+			return $content;
+		}
+		
+	}
