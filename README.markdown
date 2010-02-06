@@ -2,7 +2,7 @@
 
 A Symphony extension to create and export localisation files.
 
-- Version: 1.2
+- Version: 1.2.1
 - Author: Nils Hörrmann, post@nilshoerrmann.de
 - Build Date: 6th February 2010
 - Requirements: Symphony 2.0.7**RC2**
@@ -22,7 +22,7 @@ Since Symphony 2.0.7**RC2** it's possible to set language via the Symphony inter
 
 ### Symphony core
 
-Translations of the Symphony core are distributed via separate extensions. These extensions should be named `lang_{$name}` where `{$name}` is your language name, e. g. `lang_german` or `lang_dutch`. Each localisation extension should contain a `lang` folder where you store your translations. The needed files can be created using this extension. Please keep in mind that all language files need to follow a strict name scheme using the language code, e. g. `lang.pt-br.php` or `lang.ru.php`. [A list of all language codes can be found here](http://msdn.microsoft.com/en-us/library/ms533052(VS.85).aspx).
+Translations of the Symphony core are distributed via separate extensions. These extensions should be named `lang_{$name}` where `{$name}` is your language name, e. g. `lang_german` or `lang_dutch`. Each localisation extension should contain a `lang` folder where you store your translations. The needed files can be created using this extension. Please keep in mind that all language files need to follow a strict name scheme using the language code, e. g. `lang.pt-br.php` or `lang.ru.php`. A list of all language codes can be found here: <http://msdn.microsoft.com/en-us/library/ms533052(VS.85).aspx>.
 
 Local variants of the same language should be bundled in the same extension, e. g. `English (United States)` and `English (United Kingdom)`.
 
@@ -39,6 +39,10 @@ Further information about Symphony localisation can be found on the [Symphony we
 
 
 ## Change log
+
+**Version 1.2.1, 6th February 2010:**
+
+- Correctly handle single quotes.
 
 **Version 1.2, 6th February 2010:**
 

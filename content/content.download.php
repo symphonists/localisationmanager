@@ -73,8 +73,7 @@
 				$content = "\t\t// " . $comment . "\n\n";
 			}
 			foreach($strings as $key => $string) {
-				if(empty($string)) $string = 'false';
-				$content .= "\t\t'" . str_replace("'", "\'", $key) . "' => \n\t\t'" . str_replace("'", "\'", $string) . "',\n\n";
+				$content .= "\t\t'" . $this->__clean($key) . "' => \n\t\t" . $this->__clean($string, true) . ",\n\n";
 			}
 			return $content;
 		}
@@ -88,10 +87,18 @@
 					$count = 0;
 				}
 				if(empty($string)) $string = 'null';
+				else $string = "'" . $string . "'";
 				$content .= "\t\t'" . $key . "' => " . $string . ",";
 				$count++;
 			}
 			return $content;
+		}
+		
+		private function __clean($string, $quote=false) {
+			if(empty($string)) return 'false';
+			$string = str_replace("'", "\'", stripslashes($string));
+			if($quote) $string = "'" . $string . "'";
+			return $string;
 		}
 		
 	}

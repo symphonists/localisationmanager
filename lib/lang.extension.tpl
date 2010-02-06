@@ -1,13 +1,13 @@
 <?php
 
 	$about = array(
-		'name' => '<!-- name -->',
+		'name' => '<!-- $name -->',
 		'author' => array(
-			'name' => '<!-- author -->',
-			'email' => '<!-- email -->',
-			'website' => '<!-- website -->'
+			'name' => '<!-- $author -->',
+			'email' => '<!-- $email -->',
+			'website' => '<!-- $website -->'
 		),
-		'release-date' => '<!-- date -->',
+		'release-date' => '<!-- $date -->',
 	);
 
 

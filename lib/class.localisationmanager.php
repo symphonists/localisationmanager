@@ -127,6 +127,7 @@
 					$strings = array_merge($strings, $this->__findStrings(DOCROOT . "/{$path}/{$file}"));
 				}
 			}
+			if(empty($strings) && $name != 'symphony') return array();
 			
 			// Get navigation and JavaScript strings
 			if($name == 'symphony') {
