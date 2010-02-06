@@ -5,7 +5,7 @@ A Symphony extension to create and export localisation files.
 - Version: 1.2
 - Author: Nils Hörrmann, post@nilshoerrmann.de
 - Build Date: 5th February 2010
-- Requirements: Symphony CMS 2.0.7**RC2**
+- Requirements: Symphony 2.0.7**RC2**
 
 
 ## Extending and creating language files
