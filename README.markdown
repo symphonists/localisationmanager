@@ -2,20 +2,20 @@
 
 A Symphony extension to create and export localisation files.
 
-- Version: 1.2.1
+- Version: 1.3
 - Author: Nils Hörrmann, post@nilshoerrmann.de
-- Build Date: 6th February 2010
-- Requirements: Symphony 2.0.7**RC2**
+- Build Date: 1st March 2010
+- Requirements: Symphony 2.0.7
 
 
 ## Extending and creating language files
 
-If you like to to edit, extend, or create a language file, visit `/symphony/extension/localisationmanager/` in your browser to download language files for the Symphony core or all extension installed. Using this extension it's possible to either download language files containing all existing strings, highlighting obsolete and missing strings, or download an file without translations. 
+If you like to to edit, extend, or create a language file, visit "System" > "Localisation" to download language files for the Symphony core or all extension installed. Using this extension it's possible to either download language files containing all existing strings, highlighting obsolete and missing strings, or download an file without translations. 
 
 
 ### Using language files
 
-Since Symphony 2.0.7**RC2** it's possible to set language via the Symphony interface: You can set a default system language in the preferences or customize your own language setting in your author profile. 
+Symphony 2.0.7 it's possible to set language via the Symphony interface: You can set a default system language in the preferences or customize your own language setting in your author profile. 
 
 
 ## Sharing language files
@@ -39,6 +39,13 @@ Further information about Symphony localisation can be found on the [Symphony we
 
 
 ## Change log
+
+**Version 1.3, 1st March 2010:**
+
+- Match new JavaScript dictionaries as well. Make sure you run Symphony 2.0.7 with this fix: <http://github.com/symphony/symphony-2/commit/960b28343f4f4a3148f7025d84a49337202108a0>.
+- Added Localisation Manager to system navigation.
+- Dictionary sorting is now an optional feature.
+- Added German translations for the manager itself.
 
 **Version 1.2.1, 6th February 2010:**
 

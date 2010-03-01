@@ -11,9 +11,11 @@
 	class LocalisationManager {
 
 		private $_Parent;
+		private $_Sort;
 
 		function __construct(&$parent) {
 			$this->_Parent = $parent;
+			if(isset($_GET['sort'])) $this->_Sort = true;
 		}
 		
 		public function buildDictionary($name, $lang) {
@@ -31,7 +33,7 @@
 
 			// Prepare current translations
 			$current['dictionary'] = array_flip($current['dictionary']);
-			natcasesort($current['dictionary']);
+			if($this->_Sort == true) natcasesort($current['dictionary']);
 			$current['dictionary'] = array_unique($current['dictionary']);
 			$current['dictionary'] = array_flip($current['dictionary']);
 			
@@ -96,6 +98,7 @@
 			// Set context paths
 			if($name == 'symphony') {
 				$paths = array(
+					$name . '/assets',
 					$name . '/content',
 					$name . '/template',
 					$name . '/lib/toolkit',
@@ -120,11 +123,16 @@
 			$strings = array();
 			foreach($paths as $path) {
 				// Get files
-				$files = General::listStructure(DOCROOT . "/{$path}", array('php', 'tpl'), false, 'asc');
+				$files = General::listStructure(DOCROOT . "/{$path}", array('php', 'tpl', 'js'), false, 'asc');
 				if(empty($files['filelist'])) continue;
 				// Find strings
 				foreach($files['filelist'] as $file) {
-					$strings = array_merge($strings, $this->__findStrings(DOCROOT . "/{$path}/{$file}"));
+					if(pathinfo($file, PATHINFO_EXTENSION) == 'js') {
+						$strings = array_merge($strings, $this->__findJavaScriptStrings(DOCROOT . "/{$path}/{$file}"));
+					}
+					else {
+						$strings = array_merge($strings, $this->__findStrings(DOCROOT . "/{$path}/{$file}"));
+					}
 				}
 			}
 			if(empty($strings) && $name != 'symphony') return array();
@@ -132,13 +140,12 @@
 			// Get navigation and JavaScript strings
 			if($name == 'symphony') {
 				$strings = array_merge($strings, $this->__findNavigationStrings());
-				$strings = array_merge($strings, $this->__findJavaScriptStrings());
 			}
 			
 			// Remove duplicated
 			$strings = array_unique($strings);
 			// Sort array
-			natcasesort($strings);
+			if($this->_Sort == true) natcasesort($strings);
 			// Generate correct keys and values
 			$strings = array_combine(
 				$strings, 
@@ -213,19 +220,16 @@
 			return $strings;
 		}
 
-		private function __findJavaScriptStrings() {
+		private function __findJavaScriptStrings($path) {
 			// Get source
-			$source = file_get_contents(ASSETS . '/admin.js');
-			// Extract language definitions
-			preg_match('/Language: {(.*)"\n\t\t}/s', $source, $language);
-			// Remove line breaks and tabs
-			$language = preg_replace('/\n|\r|\t/', '', $language[1]);
-			// Extract language strings
-			$lines = explode('",', $language);
-			foreach($lines as $line) {
-				// Split language strings
-				$part = preg_split('/: {0,}"/', $line);
-				$strings[] = $part[1];
+			$source = file_get_contents($path);
+			// Extract language object
+			preg_match_all("/Symphony.Language.add\({(.*)}\);/sU", $source, $objects);
+			// Get strings
+			$strings = array();
+			foreach($objects[1] as $object) {
+				preg_match_all("/.*(\"|')(.*)(\"|'): ?false,?/sU", $object, $result);
+				$strings = array_merge($strings, $result[2]);
 			}
 			return $strings;
 		}
