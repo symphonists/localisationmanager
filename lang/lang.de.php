@@ -35,6 +35,9 @@
 		'Name',
 		
 		'Add new language' =>
-		'Neue Sprache hinzufügen'
+		'Neue Sprache hinzufügen',
+		
+		'Sort output naturally' =>
+		'Ausgabe natürlich sortieren'
 
 	);
