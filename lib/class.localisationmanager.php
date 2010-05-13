@@ -18,14 +18,21 @@
 			if(isset($_GET['sort'])) $this->_Sort = true;
 		}
 		
-		public function buildDictionary($name, $lang) {
+		public function buildDictionary($context, $lang, $name) {
 			if(!$lang) $lang = 'en';
 			
 			// Get current translations
-			$current = $this->getTranslations($name, $lang);
+			$current = $this->getTranslations($context, $lang);
 			if(empty($current)) {
 				$current = array(
-					'about' => array(),
+					'about' => array(
+						'name' => $name,
+						'author' => array(
+							'name' => $this->_Parent->Author->getFullName(),
+							'email' => $this->_Parent->Author->get('email'),
+							'website' => ''
+						),
+					),
 					'dictionary' => array(),
 					'transliterations' => array()
 				);
@@ -38,13 +45,13 @@
 			$current['dictionary'] = array_flip($current['dictionary']);
 			
 			// Get needed strings currently used by Symphony
-			$strings = $this->getStrings($name);
+			$strings = $this->getStrings($context);
 			
 			// Get transliterations
 			$alphabetical = array();
 			$symbolic = array();
 			$ampersand = array();
-			if($name == 'symphony') {
+			if($context == 'symphony') {
 				$transliterations = $this->getTransliterations($current['transliterations']);
 				$type = 'alphabeticalUC';
 				// Group tranliterations by type
@@ -68,7 +75,14 @@
 						$ampersand[$key] = $transliteration;
 					}				
 				}
-			}		
+			}
+			
+			// Exclude core strings for extensions
+			else {
+				$core = $this->getStrings('symphony');
+				$intersection = array_intersect_key($strings, $core);
+				$strings = array_diff_key($strings, $intersection);
+			}
 			
 			// Return new dictionary
 			return array(
@@ -94,28 +108,28 @@
 			);
 		}
 		
-		public function getStrings($name) {
+		public function getStrings($context) {
 			// Set context paths
-			if($name == 'symphony') {
+			if($context == 'symphony') {
 				$paths = array(
-					$name . '/assets',
-					$name . '/content',
-					$name . '/template',
-					$name . '/lib/toolkit',
-					$name . '/lib/toolkit/data-sources',
-					$name . '/lib/toolkit/events',
-					$name . '/lib/toolkit/fields'
+					$context . '/assets',
+					$context . '/content',
+					$context . '/template',
+					$context . '/lib/toolkit',
+					$context . '/lib/toolkit/data-sources',
+					$context . '/lib/toolkit/events',
+					$context . '/lib/toolkit/fields'
 				);
 			}
 			else {
 				$paths = array(
-					'extensions/'. $name .'/assets',
-					'extensions/'. $name .'/content',
-					'extensions/'. $name .'/data-sources',
-					'extensions/'. $name .'/events',
-					'extensions/'. $name .'/fields',
-					'extensions/'. $name .'/lib',
-					'extensions/'. $name
+					'extensions/'. $context .'/assets',
+					'extensions/'. $context .'/content',
+					'extensions/'. $context .'/data-sources',
+					'extensions/'. $context .'/events',
+					'extensions/'. $context .'/fields',
+					'extensions/'. $context .'/lib',
+					'extensions/'. $context
 				);
 			}
 			
@@ -135,10 +149,10 @@
 					}
 				}
 			}
-			if(empty($strings) && $name != 'symphony') return array();
+			if(empty($strings) && $context != 'symphony') return array();
 			
 			// Get navigation and JavaScript strings
-			if($name == 'symphony') {
+			if($context == 'symphony') {
 				$strings = array_merge($strings, $this->__findNavigationStrings());
 			}
 			
@@ -156,13 +170,13 @@
 			return $strings;
 		}
 		
-		public function getTranslations($name, $lang) {
+		public function getTranslations($context, $lang) {
 			// Set path
-			if($name == 'symphony') {
+			if($context == 'symphony') {
 				$path = Lang::findLanguagePath($lang, new ExtensionManager($this->_Parent));
 			}
 			else {
-				$path = EXTENSIONS . '/' . $name . '/lang';
+				$path = EXTENSIONS . '/' . $context . '/lang';
 			}
 			
 			// Get source

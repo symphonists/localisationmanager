@@ -48,7 +48,7 @@
 			foreach($languages as $code => $name) {
 				if($code == 'en') continue;
 				if($langlinks != '') $langlinks .= ', ';
-				$langlinks .= '<a href="' . $path . '%ext%/' . $code . '">' . $name . '</a>';
+				$langlinks .= '<a href="' . $path . '%ext%/' . $code . '/' . $name . '">' . $name . '</a>';
 			}
 			
 			// Create rows

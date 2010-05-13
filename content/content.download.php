@@ -15,18 +15,19 @@
 		/**
 		 * Download language file
 		 */
-		
 		function build($context) {
+		
 			// Get context
-			$name = $context[0];
+			$name = $context[2];
 			$lang = $context[1];
+			$context = $context[0];
 			
 			// Get localisation strings
-			$data = $this->LocalisationManager->buildDictionary($name, $lang);
+			$data = $this->LocalisationManager->buildDictionary($context, $lang, $name);
 
 			// Load template
 			$path = EXTENSIONS . '/localisationmanager/lib';
-			if($name == 'symphony') {
+			if($context == 'symphony') {
 				$template = file_get_contents($path . '/lang.core.tpl');
 			}
 			else {
@@ -40,17 +41,17 @@
 			$template = str_replace('<!-- $website -->', $data['about']['author']['website'], $template);
 			$template = str_replace('<!-- $date -->', $data['about']['release-date'], $template);
 			
-			if($name != 'symphony') {
+			if($context != 'symphony') {
 				$ExtensionManager = new ExtensionManager($this->parent);
 				$extensions = $ExtensionManager->listAll();
-				$template = str_replace('<!-- $extension -->', $extensions[$name]['name'], $template);
+				$template = str_replace('<!-- $extension -->', $extensions[$context]['name'], $template);
 			}
 
 			$template = str_replace('<!-- $strings -->', $this->__layout($data['dictionary']['strings']), $template);
 			$template = str_replace('<!-- $obsolete -->', $this->__layout($data['dictionary']['obsolete'], 'Obsolete'), $template);
 			$template = str_replace('<!-- $missing -->', $this->__layout($data['dictionary']['missing'], 'Missing'), $template);
 	
-			if($name == 'symphony') {
+			if($context == 'symphony') {
 				$template = str_replace('<!-- $alphabetical uppercase -->', $this->__transliterations($data['transliterations']['alphabetical']['uppercase'], 5), $template);
 				$template = str_replace('<!-- $alphabetical lowercase -->', $this->__transliterations($data['transliterations']['alphabetical']['lowercase'], 5), $template);
 				$template = str_replace('<!-- $symbolic -->', $this->__transliterations($data['transliterations']['symbolic'], 3), $template);
