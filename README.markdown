@@ -2,9 +2,9 @@
 
 A Symphony extension to create and export localisation files.
 
-- Version: 1.3
+- Version: 1.4
 - Author: Nils Hörrmann, post@nilshoerrmann.de
-- Build Date: 1st March 2010
+- Build Date: 13rd May 2010
 - Requirements: Symphony 2.0.7
 
 
@@ -39,6 +39,11 @@ Further information about Symphony localisation can be found on the [Symphony we
 
 
 ## Change log
+
+**Version 1.4, 13rd May 2010:**
+
+- Exclude core strings for extensions
+- Correctly populate about array for translations
 
 **Version 1.3, 1st March 2010:**
 
