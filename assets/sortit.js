@@ -1,40 +1,31 @@
 /*
- * LOCALISATION MANAGER for Symphony
+ * Localisation Manager
  *
  * @author: Nils Hörrmann, post@nilshoerrmann.de
- * @source: http://github.com/nilshoerrmann/mediathek
+ * @source: http://github.com/nilshoerrmann/localisationmanager
  */
-
-
-/*-----------------------------------------------------------------------------
-	Language strings
------------------------------------------------------------------------------*/	 
-
-	Symphony.Language.add({
-		'Sort output naturally': false
-	}); 
-
-
-/*-----------------------------------------------------------------------------
-	Sort output
------------------------------------------------------------------------------*/
-
-	jQuery(document).ready(function() {
+(function($) {
+	$(document).ready(function() {
+	
+		// Language strings
+		Symphony.Language.add({
+			'Sort output naturally': false
+		}); 
 	
 		// Append sort option
-		var table = jQuery('table');
-		var sort = jQuery('<div class="actions"><input type="checkbox" name="sortit" /> ' + Symphony.Language.get('Sort output naturally') + '</div>');
+		var table = $('table');
+		var sort = $('<div class="actions"><input type="checkbox" name="sortit" /> ' + Symphony.Language.get('Sort output naturally') + '</div>');
 		table.after(sort);
 		
 		// Events
 		sort.click(function(event) {
 		
 			// Get status
-			var checked = jQuery(event.target).attr('checked');
+			var checked = $(event.target).attr('checked');
 			
 			// Add or remove sort option
 			table.find('a').each(function(index, link) {
-				link = jQuery(link);
+				link = $(link);
 				var href = link.attr('href');
 	
 				// Is checked?
@@ -46,8 +37,7 @@
 				else {
 					link.attr('href', href.replace('?sort', ''));
 				}
-
 			});
-			
 		});
 	});
+})(jQuery.noConflict());

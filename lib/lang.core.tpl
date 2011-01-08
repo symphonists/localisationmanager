@@ -10,14 +10,12 @@
 		'release-date' => '<!-- $date -->',
 	);
 
-
 	/**
 	 * Symphony Core
 	 */
 	$dictionary = array(
 
 <!-- $strings --><!-- $obsolete --><!-- $missing -->	);
-
 
 	/**
 	 * Transliterations

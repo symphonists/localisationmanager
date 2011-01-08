@@ -2,15 +2,11 @@
 
 	Class extension_localisationmanager extends Extension{
 	
-		/**
-		 * Extension information
-		 */
-
 		public function about(){
 			return array(
 				'name' => 'Localisation Manager',
-				'version' => '1.3',
-				'release-date' => '2010-03-01',
+				'version' => '1.4',
+				'release-date' => '2011-01-08',
 				'author' => array(
 					'name' => 'Nils Hörrmann',
 					'website' => 'http://nilshoerrmann.de',

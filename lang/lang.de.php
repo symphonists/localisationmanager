@@ -7,9 +7,8 @@
 			'email' => 'post@nilshoerrmann.de',
 			'website' => 'http://www.nilshoerrmann.de'
 		),
-		'release-date' => '2010-03-01',
+		'release-date' => '2011-01-08',
 	);
-
 
 	/**
 	 * Localisation Manager
@@ -19,25 +18,19 @@
 		'Action' => 
 		'Aktion',
 
-		'Download installed languages' => 
-		'Verfügbare Sprachen',
-
 		'Language Manager' => 
 		'Übersicht der Übersetzungen',
-
-		'Localisations' => 
-		'Lokalisierungen',
 
 		'Localisation Manager' => 
 		'Lokalisierungsverwaltung',
 
-		'Name' => 
-		'Name',
-		
-		'Add new language' =>
-		'Neue Sprache hinzufügen',
-		
-		'Sort output naturally' =>
-		'Ausgabe natürlich sortieren'
+		'Sort output naturally' => 
+		'Ausgabe natürlich sortieren',
+
+		'Available dictionaries' => 
+		'Verfügbare Wörterbücher',
+
+		'Create new dictionary' => 
+		'Neues Wörterbuch anlegen',
 
 	);

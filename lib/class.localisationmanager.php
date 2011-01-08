@@ -54,6 +54,7 @@
 			if($context == 'symphony') {
 				$transliterations = $this->getTransliterations($current['transliterations']);
 				$type = 'alphabeticalUC';
+				
 				// Group tranliterations by type
 				foreach($transliterations as $key => $transliteration) {
 					if($type == 'alphabeticalUC') {
@@ -109,43 +110,31 @@
 		}
 		
 		public function getStrings($context) {
-			// Set context paths
+		
+			// Set context path
 			if($context == 'symphony') {
-				$paths = array(
-					$context . '/assets',
-					$context . '/content',
-					$context . '/template',
-					$context . '/lib/toolkit',
-					$context . '/lib/toolkit/data-sources',
-					$context . '/lib/toolkit/events',
-					$context . '/lib/toolkit/fields'
-				);
+				$path = DOCROOT . '/symphony';
 			}
 			else {
-				$paths = array(
-					'extensions/'. $context .'/assets',
-					'extensions/'. $context .'/content',
-					'extensions/'. $context .'/data-sources',
-					'extensions/'. $context .'/events',
-					'extensions/'. $context .'/fields',
-					'extensions/'. $context .'/lib',
-					'extensions/'. $context
-				);
+				$path = EXTENSIONS . '/' . $context;
 			}
 			
 			// Parse files
 			$strings = array();
-			foreach($paths as $path) {
+			$folders = General::listDirStructure($path);
+			foreach($folders as $folder) {
+			
 				// Get files
-				$files = General::listStructure(DOCROOT . "/{$path}", array('php', 'tpl', 'js'), false, 'asc');
+				$files = General::listStructure($folder, array('php', 'tpl', 'js'), false, 'asc');
 				if(empty($files['filelist'])) continue;
+				
 				// Find strings
 				foreach($files['filelist'] as $file) {
 					if(pathinfo($file, PATHINFO_EXTENSION) == 'js') {
-						$strings = array_merge($strings, $this->__findJavaScriptStrings(DOCROOT . "/{$path}/{$file}"));
+						$strings = array_merge($strings, $this->__findJavaScriptStrings($folder . '/' . $file));
 					}
 					else {
-						$strings = array_merge($strings, $this->__findStrings(DOCROOT . "/{$path}/{$file}"));
+						$strings = array_merge($strings, $this->__findStrings($folder . '/' . $file));
 					}
 				}
 			}
@@ -158,8 +147,10 @@
 			
 			// Remove duplicated
 			$strings = array_unique($strings);
+			
 			// Sort array
 			if($this->_Sort == true) natcasesort($strings);
+			
 			// Generate correct keys and values
 			$strings = array_combine(
 				$strings, 
@@ -171,16 +162,16 @@
 		}
 		
 		public function getTranslations($context, $lang) {
-			// Set path
+		
+			// Get file
 			if($context == 'symphony') {
-				$path = Lang::findLanguagePath($lang, new ExtensionManager($this->_Parent));
+				$file = Lang::$_languages[$lang]['path'];
 			}
 			else {
-				$path = EXTENSIONS . '/' . $context . '/lang';
+				$file = EXTENSIONS . '/' . $context . '/lang/lang.' . $lang . '.php';
 			}
 			
-			// Get source
-			$file = $path . '/lang.' . $lang . '.php';
+			// Get translations
 			if(!file_exists($file)) return false;
 			include($file);
 			if(is_array($dictionary)) ksort($dictionary);
@@ -194,8 +185,10 @@
 		}
 		
 		public function getTransliterations($current) {
+		
 			// Get source
 			include(LANG . '/lang.en.php');
+			
 			// Return transliterations
 			if(!$current) {
 				return $transliterations;
@@ -207,24 +200,31 @@
 		
 		private function __findStrings($path) {
 			if(!file_exists($path)) return false;
+			
 			// Get source
 			$source = file_get_contents($path);
-			// Find all calls to the translation function, e. g. __('Your content here'):
-			// The regular expression searches for "__('TEXT'" and makes sure that the last ' is not escaped with \
-			// as this is used for apostrophs inside some language strings, e. g. __('Symphony\'s backend').
-			// It respects any whitespace character between the opening parenthesis and single quote.
-			// The regular expression respect the usage of single and double quote.
+			
+			/**
+			 * Find all calls to the translation function, e. g. __('Your content here'):
+			 * The regular expression searches for "__('TEXT'" and makes sure that the last ' is not escaped with \
+			 * as this is used for apostrophs inside some language strings, e. g. __('Symphony\'s backend').
+			 * It respects any whitespace character between the opening parenthesis and single quote.
+			 * The regular expression respect the usage of single and double quote.
+			 */
 			preg_match_all("/__\(\s*(\"|')(.*)(?<!\\\\)\\1/U", $source, $strings);
 			return $strings[2];
 		}
 		
 		private function __findNavigationStrings() {
+		
 			// Get source
 			$doc = new DOMDocument();
 			$xml = $doc->load(ASSETS . '/navigation.xml');
+			
 			// Find navigation elements
 			$xpath = new DOMXPath($doc);
 			$items = $xpath->query("//*[not(@visible='no')]");
+			
 			// Get strings
 			$strings = array();
 			foreach($items as $item) {
@@ -235,10 +235,13 @@
 		}
 
 		private function __findJavaScriptStrings($path) {
+		
 			// Get source
 			$source = file_get_contents($path);
+			
 			// Extract language object
 			preg_match_all("/Symphony.Language.add\({(.*)}\);/sU", $source, $objects);
+			
 			// Get strings
 			$strings = array();
 			foreach($objects[1] as $object) {

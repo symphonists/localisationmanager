@@ -10,7 +10,6 @@
 		'release-date' => '<!-- $date -->',
 	);
 
-
 	/**
 	 * <!-- $extension -->
 	 */

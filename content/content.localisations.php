@@ -11,7 +11,6 @@
 		/**
 		 * Display overview page
 		 */
-		
 		function view(){
 			$this->setPageType('table');
 			$this->setTitle(__('%1$s &ndash; %2$s', array(__('Symphony'), __('Localisation Manager'))));
@@ -34,31 +33,41 @@
 			// Create table head
 			$thead = array(
 				array(__('Name'), 'col'),
-				array(__('Download installed languages'), 'col'),
+				array(__('Available dictionaries'), 'col'),
 				array(__('Action'), 'col'),
 			);
 
 			// Create table body
 			$tbody = array();
 			
-			// Get available languages
-			$languages = Lang::getAvailableLanguages($ExtensionManager);
-			$path = URL . '/symphony/extension/localisationmanager/download/';
-			$langlinks = '';
-			foreach($languages as $code => $name) {
-				if($code == 'en') continue;
-				if($langlinks != '') $langlinks .= ', ';
-				$langlinks .= '<a href="' . $path . '%ext%/' . $code . '/' . $name . '">' . $name . '</a>';
-			}
-			
 			// Create rows
 			if(is_array($overview)){
 				foreach($overview as $name => $about) {
 					if(strpos($about['handle'], 'lang_') !== false) continue;
+					
+					// Get available languages
+					$langlinks = '';
+					foreach(Lang::$_languages as $code => $data) {
+						if($code == 'en') continue;
+						
+						if($name == 'symphony' || array_key_exists($about['handle'], $data['extensions'])) {
+							if($langlinks != '') $langlinks .= ', ';
+							$langlinks .= '<a href="' . URL . '/symphony/extension/localisationmanager/download/' . $about['handle'] . '/' . $code . '/' . $data['handle'] . '">' . $data['name'] . '</a>';
+						}
+					}
+					
+					// Status
+					$class = NULL;
+					if(empty($langlinks)) {
+						$langlinks = __('None');
+						$class = 'inactive';
+					}
+					
 					// Create cells
 					$td1 = Widget::TableData($about['name']);
-					$td2 = Widget::TableData(str_replace('%ext%', $about['handle'], $langlinks));
-					$td3 = Widget::TableData('<a href="' . $path . $about['handle'] . '">' . __('Add new language') . '</a>');
+					$td2 = Widget::TableData(str_replace('%ext%', $about['handle'], $langlinks), $class);
+					$td3 = Widget::TableData('<a href="' . $path . $about['handle'] . '">' . __('Create new dictionary') . '</a>');
+					
 					// Populate table body
 					$tbody[] = Widget::TableRow(array($td1, $td2, $td3), NULL);
 				}
@@ -73,7 +82,5 @@
 
 			// Append table
 			$this->Form->appendChild($table);
-			
 		}
-		
 	}
