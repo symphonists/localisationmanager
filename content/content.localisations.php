@@ -66,7 +66,7 @@
 					// Create cells
 					$td1 = Widget::TableData($about['name']);
 					$td2 = Widget::TableData(str_replace('%ext%', $about['handle'], $langlinks), $class);
-					$td3 = Widget::TableData('<a href="' . $path . $about['handle'] . '">' . __('Create new dictionary') . '</a>');
+					$td3 = Widget::TableData('<a href="' . URL . '/symphony/extension/localisationmanager/download/' . $about['handle'] . '">' . __('Create new dictionary') . '</a>');
 					
 					// Populate table body
 					$tbody[] = Widget::TableRow(array($td1, $td2, $td3), NULL);
