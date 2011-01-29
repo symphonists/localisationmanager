@@ -7,7 +7,7 @@
 			'email' => '<!-- $email -->',
 			'website' => '<!-- $website -->'
 		),
-		'release-date' => '<!-- $date -->',
+		'release-date' => '<!-- $date -->'
 	);
 
 	/**
