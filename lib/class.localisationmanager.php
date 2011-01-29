@@ -39,11 +39,11 @@
 			}	
 
 			// Prepare current translations
-			$current['dictionary'] = array_flip($current['dictionary']);
-			if($this->_Sort == true) natcasesort($current['dictionary']);
-			$current['dictionary'] = array_unique($current['dictionary']);
-			$current['dictionary'] = array_flip($current['dictionary']);
-			
+			if($this->_Sort == true) ksort($current['dictionary']);
+			foreach($current['dictionary'] as $key => $value) {
+				if($value === false) unset($current['dictionary'][$key]);
+			}
+					
 			// Get needed strings currently used by Symphony
 			$strings = $this->getStrings($context);
 			
