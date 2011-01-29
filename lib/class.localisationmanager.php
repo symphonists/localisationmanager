@@ -120,23 +120,10 @@
 			}
 			
 			// Parse files
-			$strings = array();
+			$strings = $this->getFiles($path, array());
 			$folders = General::listDirStructure($path);
 			foreach($folders as $folder) {
-			
-				// Get files
-				$files = General::listStructure($folder, array('php', 'tpl', 'js'), false, 'asc');
-				if(empty($files['filelist'])) continue;
-				
-				// Find strings
-				foreach($files['filelist'] as $file) {
-					if(pathinfo($file, PATHINFO_EXTENSION) == 'js') {
-						$strings = array_merge($strings, $this->__findJavaScriptStrings($folder . '/' . $file));
-					}
-					else {
-						$strings = array_merge($strings, $this->__findStrings($folder . '/' . $file));
-					}
-				}
+				$strings = $this->getFiles($folder, $strings);
 			}
 			if(empty($strings) && $context != 'symphony') return array();
 			
@@ -161,6 +148,26 @@
 			return $strings;
 		}
 		
+		public function getFiles($folder, $strings) {
+
+			// Get files
+			$files = General::listStructure($folder, array('php', 'tpl', 'js'), false, 'asc');
+			if(empty($files['filelist'])) {
+				return $strings;
+			}
+			
+			// Find strings
+			foreach($files['filelist'] as $file) {
+				if(pathinfo($file, PATHINFO_EXTENSION) == 'js') {
+					$strings = array_merge($strings, $this->__findJavaScriptStrings($folder . '/' . $file));
+				}
+				else {
+					$strings = array_merge($strings, $this->__findStrings($folder . '/' . $file));
+				}
+			}
+			return $strings;
+		}
+		
 		public function getTranslations($context, $lang) {
 		
 			// Get file
@@ -175,7 +182,7 @@
 			if(!file_exists($file)) return false;
 			include($file);
 			if(is_array($dictionary)) ksort($dictionary);
-			
+
 			// Return strings
 			return array(
 				'about' => (is_array($about) ? $about : array()),
