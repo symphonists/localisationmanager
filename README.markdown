@@ -2,7 +2,7 @@
 
 A Symphony extension to create and export localisation files.
 
-- Version: 1.5
+- Version: 1.5.1
 - Author: Nils Hörrmann, post@nilshoerrmann.de
 - Build Date: 8th January 2011
 - Requirements: Symphony 2.2
@@ -33,6 +33,11 @@ Further information about Symphony localisation can be found on the [Symphony we
 
 
 ## Change log
+
+**Version 1.5.1, 30th January 2011:**
+
+- Make sure that files on the first folder level are also parsed
+- Fix link for new dictionaries
 
 **Version 1.5, 8th January 2011:**
 
