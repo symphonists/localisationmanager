@@ -127,9 +127,10 @@
 			}
 			if(empty($strings) && $context != 'symphony') return array();
 			
-			// Get navigation and JavaScript strings
+			// Get navigation and date string
 			if($context == 'symphony') {
 				$strings = array_merge($strings, $this->__findNavigationStrings());
+				$strings = array_merge($strings, $this->__getDateStrings());
 			}
 			
 			// Remove duplicated
@@ -256,6 +257,10 @@
 				$strings = array_merge($strings, $result[2]);
 			}
 			return $strings;
+		}
+		
+		private function __getDateStrings() {
+			return array_keys(Lang::$_dates);
 		}
 		
 	}
