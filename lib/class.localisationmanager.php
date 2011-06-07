@@ -85,6 +85,22 @@
 				$strings = array_diff_key($strings, $intersection);
 			}
 			
+			// Key compare function
+			function key_compare_func($key1, $key2) {
+				$key1 = stripslashes($key1);
+				$key2 = stripslashes($key2);
+				
+				if($key1 == $key2) {
+					return 0;
+				}
+				else if($key1 > $key2) {
+					return 1;
+				}
+				else {
+					return -1;
+				}
+			}
+			
 			// Return new dictionary
 			return array(
 				'about' => array(
@@ -98,8 +114,8 @@
 				),
 				'dictionary' => array(
 					'strings' => array_intersect_key($current['dictionary'], $strings),
-					'obsolete' => array_diff_key($current['dictionary'], $strings),
-					'missing' => array_diff_key($strings, $current['dictionary'])
+					'obsolete' => array_diff_ukey($current['dictionary'], $strings, "key_compare_func"),
+					'missing' => array_diff_ukey($strings, $current['dictionary'], "key_compare_func")
 				),
 				'transliterations' => array(
 					'alphabetical' => $alphabetical,
