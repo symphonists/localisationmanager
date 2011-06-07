@@ -5,8 +5,8 @@
 		public function about(){
 			return array(
 				'name' => 'Localisation Manager',
-				'version' => '1.5.1',
-				'release-date' => '2011-01-30',
+				'version' => '1.6',
+				'release-date' => '2011-06-07',
 				'author' => array(
 					'name' => 'Nils Hörrmann',
 					'website' => 'http://nilshoerrmann.de',

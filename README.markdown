@@ -2,9 +2,9 @@
 
 A Symphony extension to create and export localisation files.
 
-- Version: 1.5.1
+- Version: 1.6
 - Author: Nils Hörrmann, post@nilshoerrmann.de
-- Build Date: 8th January 2011
+- Build Date: 7th June 2011
 - Requirements: Symphony 2.2
 
 
@@ -34,55 +34,59 @@ Further information about Symphony localisation can be found on the [Symphony we
 
 ## Change log
 
-**Version 1.5.1, 30th January 2011:**
+**Version 1.6**
+
+- Fix apostrophe handling in strings (thanks Simone!)
+
+**Version 1.5.1**
 
 - Make sure that files on the first folder level are also parsed
 - Fix link for new dictionaries
 
-**Version 1.5, 8th January 2011:**
+**Version 1.5**
 
 - Symphony 2.2 compatibility
 
-**Version 1.4, 13rd May 2010:**
+**Version 1.4**
 
 - Exclude core strings for extensions
 - Correctly populate about array for translations
 
-**Version 1.3, 1st March 2010:**
+**Version 1.3**
 
 - Match new JavaScript dictionaries as well. Make sure you run Symphony 2.0.7 with this fix: <http://github.com/symphony/symphony-2/commit/960b28343f4f4a3148f7025d84a49337202108a0>.
 - Added Localisation Manager to system navigation.
 - Dictionary sorting is now an optional feature.
 - Added German translations for the manager itself.
 
-**Version 1.2.1, 6th February 2010:**
+**Version 1.2.1**
 
 - Correctly handle single quotes.
 
-**Version 1.2, 6th February 2010:**
+**Version 1.2**
 
 - Complete rewrite of the string matching function
 - Removed all features for backend localisation which are now part of the core
 - Introduced a new interface which allows separate export of language files for the core and each extension available
 
-**Version 1.1, 8th January 2010:**
+**Version 1.1**
 
 - Updated to confirm with Symphony 2.0.7beta changes
 
-**Version 1.0.3, 10th November 2009:**
+**Version 1.0.3**
 
 - Added two more languages (Dutch and Portuguese)
 
-**Version 1.0.2, 19th September 2009:**
+**Version 1.0.2**
 
 - Fixed issue with unescaped single quotes in missing string list.
 - Fixed regex used to extract language code from language file names.
 
-**Version 1.0.1, 19th September 2009:** 
+**Version 1.0.1** 
 
 - Added dynamic JavaScript translation generation.
 - Fixed issue with escaped double quotes.
 
-**Version 1.0.0, 17th September 2009:**
+**Version 1.0.0**
 
 - Initial release.
