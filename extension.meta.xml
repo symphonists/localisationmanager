@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension id="localisationmanager" status="released" xmlns="http://symphony-cms.com/schemas/extension/1.0">
+	<name>Localisation Manager</name>
+	<description>Symphony in your own language</description>
+	<repo type="github">https://github.com/symphonists/localisationmanager</repo>
+	<url type="discuss">http://symphony-cms.com/discuss/thread/29602/</url>
+	<types>
+		<type>Multilingual</type>
+	</types>
+	<authors>
+		<author>
+			<name github="symphonists" symphony="community">Symphony Community</name>
+			<website>https://github.com/symphonists</website>
+		</author>
+		<author>
+			<name github="nilshoerrmann" symphony="Nils">Nils Hörrmann</name>
+			<website>http://nilshoerrmann.de</website>
+		</author>
+	</authors>
+	<releases>
+		<release version="1.6" date="2011-06-07" min="2.2">
+			- Fix apostrophe handling in strings (thanks Simone!)
+		</release>
+		<release version="1.5" date="2011-01-30">
+			- Make sure that files on the first folder level are also parsed
+			- Fix link for new dictionaries
+		</release>
+		<release version="1.4" date="2011-01-30" min="2.0.7">
+			- Symphony 2.2 compatibility
+		</release>
+	</releases>
+</extension>
