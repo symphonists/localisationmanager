@@ -15,7 +15,7 @@
 		// Append sort option
 		var context = $('#context'),
 			table = $('table'),
-			sort = $('<div class="sorting" style="float: right;"><input type="checkbox" name="sortit" /> ' + Symphony.Language.get('Sort strings alphabetically') + '</div>').appendTo(context);
+			sort = $('<label style="float: right;"><input type="checkbox" name="sortit" /> ' + Symphony.Language.get('Sort strings alphabetically') + '</label>').appendTo(context);
 		
 		// Events
 		sort.click(function(event) {
