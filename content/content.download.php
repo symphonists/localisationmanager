@@ -7,8 +7,8 @@
 
 		private $LocalisationManager;
 		
-		function __construct(&$parent) {
-			parent::__construct($parent);
+		function __construct() {
+			parent::__construct();
 			$this->LocalisationManager = new LocalisationManager($parent);
 		}
 		

@@ -13,10 +13,11 @@
 	 * Localisation Manager
 	 */
 	$dictionary = array(
+	
 		'Localisations' => 
 		'Localizări',
 
-		'Sort output naturally' => 
+		'Sort strings alphabetically' => 
 		'Sortare naturală a rezultatului',
 
 		'Localisation Manager' => 

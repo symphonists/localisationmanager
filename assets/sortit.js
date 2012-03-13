@@ -2,20 +2,20 @@
  * Localisation Manager
  *
  * @author: Nils Hörrmann, post@nilshoerrmann.de
- * @source: http://github.com/nilshoerrmann/localisationmanager
+ * @source: http://github.com/symphonists/localisationmanager
  */
 (function($) {
 	$(document).ready(function() {
 	
 		// Language strings
 		Symphony.Language.add({
-			'Sort output naturally': false
+			'Sort strings alphabetically': false
 		}); 
 	
 		// Append sort option
-		var table = $('table');
-		var sort = $('<div class="actions"><input type="checkbox" name="sortit" /> ' + Symphony.Language.get('Sort output naturally') + '</div>');
-		table.after(sort);
+		var context = $('#context'),
+			table = $('table'),
+			sort = $('<div class="sorting" style="float: right;"><input type="checkbox" name="sortit" /> ' + Symphony.Language.get('Sort strings alphabetically') + '</div>').appendTo(context);
 		
 		// Events
 		sort.click(function(event) {

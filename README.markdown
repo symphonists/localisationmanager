@@ -2,12 +2,6 @@
 
 A Symphony extension to create and export localisation files.
 
-- Version: 1.6
-- Author: Nils Hörrmann, Symphony Community
-- Build Date: 7th June 2011
-- Requirements: Symphony 2.2
-
-
 ## Extending and creating language files
 
 If you like to to edit, extend, or create a language file, visit "System" > "Localisation" to download language files for the Symphony core or all extension installed. Using this extension it's possible to either download language files containing all existing strings, highlighting obsolete and missing strings, or download an file without translations. 

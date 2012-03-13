@@ -24,8 +24,8 @@
 		'Localisation Manager' => 
 		'Lokalisierungsverwaltung',
 
-		'Sort output naturally' => 
-		'Ausgabe natürlich sortieren',
+		'Sort strings alphabetically' => 
+		'Übersetzungen alphabetisch sortieren',
 
 		'Available dictionaries' => 
 		'Verfügbare Wörterbücher',
