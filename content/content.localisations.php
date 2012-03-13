@@ -58,7 +58,7 @@
 		
 								// Create link
 								if(!empty($langlinks)) $langlinks .= ', ';
-								$langlinks .= '<a href="' . URL . '/symphony/extension/localisationmanager/download/' . $details['handle'] . '/' . $code . '/">' . $about['name'] . '</a>';
+								$langlinks .= '<a href="' . URL . '/symphony/extension/localisationmanager/download/' . $details['handle'] . '/' . $code . '/">' . ($about['name'] ? $about['name'] : $code) . '</a>';
 							}
 						}
 					}
