@@ -10,11 +10,9 @@
 
 	class LocalisationManager {
 
-		private $_Parent;
 		private $_Sort;
 
-		function __construct(&$parent) {
-			$this->_Parent = $parent;
+		function __construct() {
 			if(isset($_GET['sort'])) $this->_Sort = true;
 		}
 		
@@ -28,8 +26,8 @@
 					'about' => array(
 						'name' => $name,
 						'author' => array(
-							'name' => $this->_Parent->Author->getFullName(),
-							'email' => $this->_Parent->Author->get('email'),
+							'name' => $Author->getFullName(),
+							'email' => $Author->get('email'),
 							'website' => ''
 						),
 					),

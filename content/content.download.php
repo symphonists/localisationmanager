@@ -9,7 +9,7 @@
 		
 		function __construct() {
 			parent::__construct();
-			$this->LocalisationManager = new LocalisationManager($parent);
+			$this->LocalisationManager = new LocalisationManager();
 		}
 		
 		/**
