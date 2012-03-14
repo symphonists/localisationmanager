@@ -115,6 +115,20 @@
 				}
 			}
 			
+			// Extract namespaces
+			$namespaces = array();
+			foreach($current['dictionary'] as $namespace => $translations) {
+				if(is_array($translations)) {
+					
+					// Check for existence of strings
+					$namespaces[$namespace]['strings'] = array_intersect_key($translations, $current['dictionary']);
+					$namespaces[$namespace]['obsolete'] = array_diff_ukey($translations, $current['dictionary'], "key_compare_func");
+					
+					// Remove namespaces from list of plain strings
+					unset($current['dictionary'][$namespace]); 
+				}
+			}
+			
 			// Return new dictionary
 			return array(
 				'about' => array(
@@ -130,7 +144,7 @@
 					'strings' => array_intersect_key($current['dictionary'], $strings),
 					'obsolete' => array_diff_ukey($current['dictionary'], $strings, "key_compare_func"),
 					'missing' => array_diff_ukey($strings, $current['dictionary'], "key_compare_func"),
-					'namespaces' => array()
+					'namespaces' => $namespaces
 				),
 				'transliterations' => array(
 					'straight' => $straight,

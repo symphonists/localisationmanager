@@ -50,7 +50,7 @@
 			$template = str_replace('<!-- $strings -->', $this->__layout($data['dictionary']['strings']), $template);
 			$template = str_replace('<!-- $obsolete -->', $this->__layout($data['dictionary']['obsolete'], 'Obsolete'), $template);
 			$template = str_replace('<!-- $missing -->', $this->__layout($data['dictionary']['missing'], 'Missing'), $template);
-			$template = str_replace('<!-- $namespaces -->', $this->__layout($data['dictionary']['namespacing'], 'Namespaced translations'), $template);
+			$template = str_replace('<!-- $namespaces -->', $this->__layoutNamespace($data['dictionary']['namespaces']), $template);
 	
 			if($context == 'symphony') {
 				$template = str_replace('<!-- $uppercase -->', $this->__transliterations($data['transliterations']['straight']['uppercase'], 5), $template);
@@ -72,13 +72,27 @@
 			exit();			
 		}
 		
-		private function __layout($strings, $comment=false) {
+		private function __layoutNamespace($namespaces) {
+			if(empty($namespaces)) return;
+		
+			$namespaced = '';
+			foreach($namespaces as $name => $groups) {
+				$namespaced .= "\t\t// Namespaced translations for " . $name . "\n\n";
+				$namespaced .= "\t\t'" . $this->__clean($name) . "' => array(\n\n";
+				$namespaced .= $this->__layout($groups['strings'], false, $indent = "\t\t\t");
+				$namespaced .= $this->__layout($groups['obsolete'], 'Obsolete namespaced strings', $indent = "\t\t\t");
+				$namespaced .= "\t\t)\n\n";
+			}
+			return $namespaced;
+		}
+		
+		private function __layout($strings, $comment=false, $indent = "\t\t") {
 			if(!is_array($strings) || empty($strings)) return;
 			if($comment) {
-				$content = "\t\t// " . $comment . "\n\n";
+				$content = $indent . "// " . $comment . "\n\n";
 			}
 			foreach($strings as $key => $string) {
-				$content .= "\t\t'" . $this->__clean($key) . "' => \n\t\t" . $this->__clean($string, true) . ",\n\n";
+				$content .= $indent . "'" . $this->__clean($key) . "' => \n" . $indent . $this->__clean($string, true) . ",\n\n";
 			}
 			return $content;
 		}
