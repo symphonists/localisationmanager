@@ -24,10 +24,10 @@
 			if(empty($current)) {
 				$current = array(
 					'about' => array(
-						'name' => $name,
+						'name' => ($name ? $name : 'New translation'),
 						'author' => array(
-							'name' => $Author->getFullName(),
-							'email' => $Author->get('email'),
+							'name' => Administration::instance()->Author->getFullName(),
+							'email' => Administration::instance()->Author->get('email'),
 							'website' => ''
 						),
 					),
@@ -166,7 +166,7 @@
 		public function getFiles($folder, $strings) {
 
 			// Get files
-			$files = General::listStructure($folder, array('php', 'tpl', 'js'), false, 'asc');
+			$files = General::listStructure(preg_replace('{/$}', '', $folder), array('php', 'tpl', 'js'), false, 'asc', false);
 			if(empty($files['filelist'])) {
 				return $strings;
 			}
@@ -174,10 +174,10 @@
 			// Find strings
 			foreach($files['filelist'] as $file) {
 				if(pathinfo($file, PATHINFO_EXTENSION) == 'js') {
-					$strings = array_merge($strings, $this->__findJavaScriptStrings($folder . '/' . $file));
+					$strings = array_merge($strings, $this->__findJavaScriptStrings($file));
 				}
 				else {
-					$strings = array_merge($strings, $this->__findStrings($folder . '/' . $file));
+					$strings = array_merge($strings, $this->__findStrings($file));
 				}
 			}
 			return $strings;
@@ -207,12 +207,10 @@
 		}
 		
 		public function getTransliterations($current) {
-		
-			// Get source
-			include(LANG . '/lang.en.php');
+			include(LANG . '/transliterations.php');
 			
 			// Return transliterations
-			if(!$current) {
+			if(!$current['straight']) {
 				return $transliterations;
 			}
 			else {
@@ -274,7 +272,10 @@
 		}
 		
 		private function __getDateStrings() {
-			return array_keys(Lang::$_dates);
+			include(LANG . '/datetime.php');
+			
+			// Return date and time strings
+			return $datetime_strings;
 		}
 		
 	}

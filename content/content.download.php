@@ -60,7 +60,7 @@
 			
 			// Send file
 			header('Content-Type: application/x-php; charset=utf-8');
-			header('Content-Disposition: attachment; filename="lang.' . $lang. '.php"');
+			header('Content-Disposition: attachment; filename="lang.' . ($lang ? $lang : 'new') . '.php"');
 			header("Content-Description: File Transfer");
 			header("Cache-Control: no-cache, must-revalidate");
 			header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
