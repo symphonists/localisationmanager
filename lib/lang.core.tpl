@@ -20,19 +20,34 @@
 	/**
 	 * Transliterations
 	 */
-	$transliterations = array(
+	$straight = array(
 
-		// Alphabetical
-		
-<!-- $alphabetical uppercase -->
-<!-- $alphabetical lowercase -->
+		// Uppercase letters
+	<!-- $uppercase -->
+
+		// Lowercase letters
+	<!-- $lowercase -->
 
 		// Symbolic
-		
-<!-- $symbolic -->
+	<!-- $symbolic -->
 
+		// Special characters
+	<!-- $special -->
+
+		// Other characters
+	<!-- $otherstraight -->
+	);
+	
+	$regexp = array(
+	
 		// Ampersands
-		
-<!-- $ampersands -->
+	<!-- $ampersands -->
 
+		// Other characters
+	<!-- $otherregexp -->
+	);
+
+	$transliterations = array(
+		'straight' => $straight,
+		'regexp' => $regexp
 	);

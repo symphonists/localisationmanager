@@ -52,10 +52,13 @@
 			$template = str_replace('<!-- $missing -->', $this->__layout($data['dictionary']['missing'], 'Missing'), $template);
 	
 			if($context == 'symphony') {
-				$template = str_replace('<!-- $alphabetical uppercase -->', $this->__transliterations($data['transliterations']['alphabetical']['uppercase'], 5), $template);
-				$template = str_replace('<!-- $alphabetical lowercase -->', $this->__transliterations($data['transliterations']['alphabetical']['lowercase'], 5), $template);
-				$template = str_replace('<!-- $symbolic -->', $this->__transliterations($data['transliterations']['symbolic'], 3), $template);
-				$template = str_replace('<!-- $ampersands -->', $this->__transliterations($data['transliterations']['ampersands']), $template);
+				$template = str_replace('<!-- $uppercase -->', $this->__transliterations($data['transliterations']['straight']['uppercase'], 5), $template);
+				$template = str_replace('<!-- $lowercase -->', $this->__transliterations($data['transliterations']['straight']['lowercase'], 5), $template);
+				$template = str_replace('<!-- $symbolic -->', $this->__transliterations($data['transliterations']['straight']['symbolic'], 3), $template);
+				$template = str_replace('<!-- $special -->', $this->__transliterations($data['transliterations']['straight']['special']), $template);
+				$template = str_replace('<!-- $otherstraight -->', $this->__transliterations($data['transliterations']['straight']['other']), $template);
+				$template = str_replace('<!-- $ampersands -->', $this->__transliterations($data['transliterations']['regexp']['ampersands']), $template);
+				$template = str_replace('<!-- $otherregexp -->', $this->__transliterations($data['transliterations']['regexp']['other']), $template);
 			}
 			
 			// Send file
@@ -84,12 +87,12 @@
 			$count = 0;
 			foreach($strings as $key => $string) {
 				if($count == $break) {
-					$content .= "\n";
+					$content .= "\n\t";
 					$count = 0;
 				}
 				if(empty($string)) $string = 'null';
 				else $string = "'" . $string . "'";
-				$content .= "\t\t'" . $key . "' => " . $string . ",";
+				$content .= " \t'" . $key . "' => " . $string . ",";
 				$count++;
 			}
 			return $content;

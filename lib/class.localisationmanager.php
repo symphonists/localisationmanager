@@ -46,33 +46,49 @@
 			$strings = $this->getStrings($context);
 			
 			// Get transliterations
-			$alphabetical = array();
-			$symbolic = array();
-			$ampersand = array();
+			$straight = array();
+			$regexp = array();
 			if($context == 'symphony') {
 				$transliterations = $this->getTransliterations($current['transliterations']);
-				$type = 'alphabeticalUC';
 				
-				// Group tranliterations by type
-				foreach($transliterations as $key => $transliteration) {
-					if($type == 'alphabeticalUC') {
-						$alphabetical['uppercase'][$key] = $transliteration;
-						if($key == '/Þ/') $type = 'alphabeticalLC';
-						continue;
-					}
-					if($type == 'alphabeticalLC') {
-						$alphabetical['lowercase'][$key] = $transliteration;
-						if($key == '/ŉ/') $type = 'symbolic';
-						continue;
-					}
-					elseif($type == 'symbolic') {
-						$symbolic[$key] = $transliteration;
-						if($key == '/¡/') $type = 'ampersand';
-						continue;
-					}
-					elseif($type == 'ampersand') {
-						$ampersand[$key] = $transliteration;
-					}				
+				// Group straight transliterations by type
+				$type = null;
+				foreach($transliterations['straight'] as $key => $transliteration) {
+					switch($type) {
+						case 'lowercase':
+							$straight['lowercase'][$key] = $transliteration;
+							if($key == 'ŉ') $type = 'symbolic';
+							break;
+						case 'symbolic':
+							$straight['symbolic'][$key] = $transliteration;
+							if($key == '»') $type = 'special';
+							break;
+						case 'special':
+							$straight['special'][$key] = $transliteration;
+							if($key == 'º') $type = 'other';
+							break;
+						case 'other':
+							$straight['other'][$key] = $transliteration;
+							break;
+						default:
+							$straight['uppercase'][$key] = $transliteration;
+							if($key == 'Þ') $type = 'lowercase';
+							break;
+					}	
+				}
+				
+				// Regular expression based transliterations – no grouping needed so far
+				$type = null;
+				foreach($transliterations['regexp'] as $key => $transliteration) {
+					switch($type) {
+						case 'other':
+							$regexp['other'][$key] = $transliteration;
+							break;
+						default:
+							$regexp['ampersands'][$key] = $transliteration;
+							if($key == '/&(?!&)/') $type = 'other';
+							break;
+					}	
 				}
 			}
 			
@@ -116,9 +132,8 @@
 					'missing' => array_diff_ukey($strings, $current['dictionary'], "key_compare_func")
 				),
 				'transliterations' => array(
-					'alphabetical' => $alphabetical,
-					'symbolic' => $symbolic,
-					'ampersands' => $ampersand
+					'straight' => $straight,
+					'regexp' => $regexp
 				)
 			);
 		}
