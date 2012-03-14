@@ -203,7 +203,10 @@
 		
 			// Get file
 			if($context == 'symphony') {
-				$file = Lang::$_languages[$lang]['path'];
+				$languages = Lang::Languages();
+				$file = vsprintf('%s/lang_%s/lang/lang.%s.php', array(
+					EXTENSIONS, $languages[$lang]['handle'], $lang
+				));
 			}
 			else {
 				$file = EXTENSIONS . '/' . $context . '/lang/lang.' . $lang . '.php';

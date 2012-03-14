@@ -65,12 +65,12 @@
 					
 					// Core
 					else {
-						foreach(Lang::Languages() as $code => $language) {
+						foreach(Lang::getAvailableLanguages() as $code => $language) {
 							if($code == 'en') continue;
 						
 							// Create link
 							if(!empty($langlinks)) $langlinks .= ', ';
-							$langlinks .= '<a href="' . URL . '/symphony/extension/localisationmanager/download/symphony/' . $code . '/">' . $language['name'] . '</a>';
+							$langlinks .= '<a href="' . URL . '/symphony/extension/localisationmanager/download/symphony/' . $code . '/">' . $language . '</a>';
 						}
 					}
 					
