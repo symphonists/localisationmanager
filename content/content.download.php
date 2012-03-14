@@ -50,6 +50,7 @@
 			$template = str_replace('<!-- $strings -->', $this->__layout($data['dictionary']['strings']), $template);
 			$template = str_replace('<!-- $obsolete -->', $this->__layout($data['dictionary']['obsolete'], 'Obsolete'), $template);
 			$template = str_replace('<!-- $missing -->', $this->__layout($data['dictionary']['missing'], 'Missing'), $template);
+			$template = str_replace('<!-- $namespaces -->', $this->__layout($data['dictionary']['namespacing'], 'Namespaced translations'), $template);
 	
 			if($context == 'symphony') {
 				$template = str_replace('<!-- $uppercase -->', $this->__transliterations($data['transliterations']['straight']['uppercase'], 5), $template);

@@ -129,7 +129,8 @@
 				'dictionary' => array(
 					'strings' => array_intersect_key($current['dictionary'], $strings),
 					'obsolete' => array_diff_ukey($current['dictionary'], $strings, "key_compare_func"),
-					'missing' => array_diff_ukey($strings, $current['dictionary'], "key_compare_func")
+					'missing' => array_diff_ukey($strings, $current['dictionary'], "key_compare_func"),
+					'namespaces' => array()
 				),
 				'transliterations' => array(
 					'straight' => $straight,

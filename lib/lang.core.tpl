@@ -15,7 +15,7 @@
 	 */
 	$dictionary = array(
 
-<!-- $strings --><!-- $obsolete --><!-- $missing -->	);
+<!-- $strings --><!-- $obsolete --><!-- $missing --><!-- $namespaces -->	);
 
 	/**
 	 * Transliterations
