@@ -28,8 +28,8 @@
 			// Create table head
 			$thead = array(
 				array(__('Name'), 'col'),
-				array(__('Available dictionaries'), 'col'),
-				array(__('Action'), 'col'),
+				array(__('Export dictionary'), 'col'),
+				array(__('Create dictionary'), 'col'),
 			);
 
 			// Create table body
@@ -84,7 +84,7 @@
 					// Create cells
 					$td1 = Widget::TableData($details['name']);
 					$td2 = Widget::TableData(str_replace('%ext%', $about['handle'], $langlinks), $class);
-					$td3 = Widget::TableData('<a href="' . URL . '/symphony/extension/localisationmanager/download/' . $details['handle'] . '">' . __('Create new dictionary') . '</a>');
+					$td3 = Widget::TableData('<a href="' . URL . '/symphony/extension/localisationmanager/download/' . $details['handle'] . '">' . __('Add language') . '</a>');
 					
 					// Populate table body
 					$tbody[] = Widget::TableRow(array($td1, $td2, $td3), NULL);
