@@ -80,7 +80,7 @@
 				$namespaced .= "\t\t// Namespaced translations for " . $name . "\n\n";
 				$namespaced .= "\t\t'" . $this->__clean($name) . "' => array(\n\n";
 				$namespaced .= $this->__layout($groups['strings'], false, $indent = "\t\t\t");
-				$namespaced .= $this->__layout($groups['obsolete'], 'Obsolete namespaced strings', $indent = "\t\t\t");
+				$namespaced .= $this->__layout($groups['obsolete'], 'Obsolete', $indent = "\t\t\t");
 				$namespaced .= "\t\t)\n\n";
 			}
 			return $namespaced;
