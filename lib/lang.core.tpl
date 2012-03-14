@@ -23,27 +23,34 @@
 	$straight = array(
 
 		// Uppercase letters
+		
 	<!-- $uppercase -->
 
 		// Lowercase letters
+		
 	<!-- $lowercase -->
 
 		// Symbolic
+		
 	<!-- $symbolic -->
 
 		// Special characters
+		
 	<!-- $special -->
 
 		// Other characters
+		
 	<!-- $otherstraight -->
 	);
 	
 	$regexp = array(
 	
 		// Ampersands
+		
 	<!-- $ampersands -->
 
 		// Other characters
+		
 	<!-- $otherregexp -->
 	);
 
