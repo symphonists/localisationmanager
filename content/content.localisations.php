@@ -77,14 +77,14 @@
 					// Status
 					$class = NULL;
 					if(empty($langlinks)) {
-						$langlinks = __('None');
+						$langlinks = __('No language available');
 						$class = 'inactive';
 					}
 					
 					// Create cells
 					$td1 = Widget::TableData($details['name']);
 					$td2 = Widget::TableData(str_replace('%ext%', $about['handle'], $langlinks), $class);
-					$td3 = Widget::TableData('<a href="' . URL . '/symphony/extension/localisationmanager/download/' . $details['handle'] . '">' . __('Add language') . '</a>');
+					$td3 = Widget::TableData('+ <a href="' . URL . '/symphony/extension/localisationmanager/download/' . $details['handle'] . '">' . __('Add language') . '</a>');
 					
 					// Populate table body
 					$tbody[] = Widget::TableRow(array($td1, $td2, $td3), NULL);

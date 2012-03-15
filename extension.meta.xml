@@ -18,6 +18,10 @@
 		</author>
 	</authors>
 	<releases>
+		<release version="2.0.1" date="2012-03-15" min="2.3">
+			- Added German translations
+			- Refined language strings
+		</release>
 		<release version="2.0" date="2012-03-14" min="2.3">
 			- Symphony 2.3 compatibility
 		</release>

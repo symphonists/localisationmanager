@@ -6,6 +6,10 @@ A Symphony extension to create and export localisation files.
 
 If you like to to edit, extend, or create a language file, visit "System" > "Localisation" to download language files for the Symphony core or all extension installed. Using this extension it's possible to either download language files containing all existing strings, highlighting obsolete and missing strings, or download an file without translations. 
 
+### Compatibility
+
+As of version 2.0 this extension is compatible with Symphony 2.3 only and comes with support for namespaced translations and updated transliterations.
+
 ## Sharing language files
 
 ### Symphony core
