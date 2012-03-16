@@ -7,6 +7,19 @@
 
 		private $LocalisationManager;
 		
+		private $titles = array(
+			'/login' => 'Namespaced translations for the login area',
+			'/publish' => 'Namespace translations for the publish area',
+			'/blueprints/pages' => 'Namespaced translations for pages', 
+			'/blueprints/sections' => 'Namespaced translations for sections',
+			'/blueprints/datasources' => 'Namespaced translations for Data Sources', 
+			'/blueprints/events' => 'Namespaced translations for events',
+			'/blueprints/utilities' => 'Namespaced translations for utilities',
+			'/system/authors' => 'Namespaced translations for authors',
+			'/system/preferences' => 'Namespaced translations for the preferences',
+			'/system/extensions' => 'Namespaced translations for the extension overview'		
+		);
+		
 		function __construct() {
 			parent::__construct();
 			$this->LocalisationManager = new LocalisationManager();
@@ -77,7 +90,17 @@
 		
 			$namespaced = '';
 			foreach($namespaces as $name => $groups) {
-				$namespaced .= "\t\t// Namespaced translations for " . $name . "\n\n";
+			
+				// Get context
+				if(array_key_exists($name, $this->titles)) {
+					$title = $this->titles[$name];
+				}
+				else {
+					$title = 'Namespaced translations for other areas';
+				}
+			
+				// Create namespace
+				$namespaced .= "\t\t// " . $title . "\n\n";
 				$namespaced .= "\t\t'" . $this->__clean($name) . "' => array(\n\n";
 				$namespaced .= $this->__layout($groups['strings'], false, $indent = "\t\t\t");
 				$namespaced .= $this->__layout($groups['obsolete'], 'Obsolete', $indent = "\t\t\t");
