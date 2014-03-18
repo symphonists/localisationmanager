@@ -272,7 +272,7 @@
 		
 			// Get source
 			$doc = new DOMDocument();
-			$xml = $doc->load(ASSETS . '/navigation.xml');
+			$xml = $doc->load(ASSETS . '/xml/navigation.xml');
 			
 			// Find navigation elements
 			$xpath = new DOMXPath($doc);
