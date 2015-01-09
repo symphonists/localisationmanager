@@ -18,30 +18,30 @@
 		</author>
 	</authors>
 	<releases>
-		<release version="2.2" date="2015-01-09" min="2.6">
+		<release version="2.2.0" date="2015-01-09" min="2.6.0">
 			- Symphony 2.6 compatibility
 		</release>
-		<release version="2.1" date="2014-03-18" min="2.4">
+		<release version="2.1.0" date="2014-03-18" min="2.4.0">
 			- Symphony 2.4 compatibility
 		</release>
-		<release version="2.0.2" date="2012-03-16" min="2.3">
+		<release version="2.0.2" date="2012-03-16" min="2.3.0">
 			- Improved titles for namespaces
 		</release>
-		<release version="2.0.1" date="2012-03-15" min="2.3">
+		<release version="2.0.1" date="2012-03-15" min="2.3.0">
 			- Added German translations
 			- Refined language strings
 		</release>
-		<release version="2.0" date="2012-03-14" min="2.3">
+		<release version="2.0.0" date="2012-03-14" min="2.3.0">
 			- Symphony 2.3 compatibility
 		</release>
-		<release version="1.6" date="2011-06-07" min="2.2" max="2.2.5">
+		<release version="1.6.0" date="2011-06-07" min="2.2" max="2.2.5">
 			- Fix apostrophe handling in strings (thanks Simone!)
 		</release>
-		<release version="1.5" date="2011-01-30">
+		<release version="1.5.0" date="2011-01-30">
 			- Make sure that files on the first folder level are also parsed
 			- Fix link for new dictionaries
 		</release>
-		<release version="1.4" date="2011-01-30" min="2.0.7">
+		<release version="1.4.0" date="2011-01-30" min="2.0.7">
 			- Symphony 2.2 compatibility
 		</release>
 	</releases>
