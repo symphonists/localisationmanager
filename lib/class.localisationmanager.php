@@ -26,8 +26,8 @@
 					'about' => array(
 						'name' => ($name ? $name : 'New translation'),
 						'author' => array(
-							'name' => Administration::instance()->Author->getFullName(),
-							'email' => Administration::instance()->Author->get('email'),
+							'name' => Administration::instance()->Author()->getFullName(),
+							'email' => Administration::instance()->Author()->get('email'),
 							'website' => ''
 						),
 					),

@@ -18,6 +18,9 @@
 		</author>
 	</authors>
 	<releases>
+		<release version="2.2" date="2015-01-09" min="2.6">
+			- Symphony 2.6 compatibility
+		</release>
 		<release version="2.1" date="2014-03-18" min="2.4">
 			- Symphony 2.4 compatibility
 		</release>
