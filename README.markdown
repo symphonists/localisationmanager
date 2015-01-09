@@ -8,7 +8,7 @@ If you like to to edit, extend, or create a language file, visit "System" > "Loc
 
 ### Compatibility
 
-As of version 2.0 this extension is compatible with Symphony 2.3 only and comes with support for namespaced translations and updated transliterations.
+As of version 2.0 this extension is compatible with Symphony 2.3+ only and comes with support for namespaced translations and updated transliterations.
 
 ## Sharing language files
 
